@@ -1,0 +1,45 @@
+<nav class="main-menu">
+    <div class="main-menu__header mb-5">
+        <span class="main-menu__header--title">Tableau de bord</span>
+        <br>
+        <span class="d-flex flex-column justify-content-between">
+            {{ app.user.firstname }}
+            <a href="{{ path('app_logout') }}" class="main-menu__list--link">
+                <i class="fa-solid fa-arrow-right-from-bracket" title="Déconnection"></i>
+            </a>
+        </span>
+    </div>
+
+    <hr>
+
+    <ul class="main-menu__list">
+        <li class="main-menu__list--lists mt-5">
+            <a href="#" class="main-menu__list--link">
+                <i class="fa-solid fa-users fa-2x main-menu__list--i"></i>
+                <span class="main-menu__list--title">Partenaires</span>
+            </a>                    
+        </li>
+        <li class="main-menu__list--lists mt-5">
+            <a href="#" class="main-menu__list--link">
+                <i class="fa-solid fa-dumbbell fa-2x main-menu__list--i"></i>
+                <span class="main-menu__list--title">Structures</span>
+            </a>
+        </li>
+        <li  class="main-menu__list--lists mt-5">
+            <a href="#" class="main-menu__list--link">
+                <i class="fa fa-list fa-2x main-menu__list--i"></i>
+                <span class="main-menu__list--title">Permissions</span>
+            </a>
+        </li>
+    </ul>
+
+    {# <ul class="main-menu__list">
+        <li  class="main-menu__list--lists">
+            <a href="#" class="main-menu__list--link">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-2x main-menu__list--i"></i>
+                <span class="main-menu__list--title">Déconnexion</span>
+            </a>
+        </li>  
+    </ul> #}
+
+</nav>

@@ -1,5 +1,80 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: 0;;
+}
+
+/* -------------------- */
+
+body {
+    --dashboard-background-color: black;
+    --dashboard-items-color: rgb(219, 222, 222);
+}
+
+/* -------------------- */
+
+/* Navbar */
+.main-menu {
+background-color: var(--dashboard-background-color);
+position: absolute;
+top: 0;
+bottom: 0;
+height: 100%;
+left: 0;
+width: 200px;
+overflow:hidden;
+/* z-index: 1000; */
+}
+
+.main-menu__list--lists {
+    list-style-type: none;
+    vertical-align: middle;
+}
+
+.main-menu__list--link {
+    text-decoration: none;
+    color: var(--dashboard-items-color);
+}
+
+.main-menu__list--i {
+    vertical-align:middle;
+}
+
+.main-menu__header {
+    margin: 20px;
+    color: var(--dashboard-items-color);
+}
+
+.main-menu__list--title {
+    padding-left: 15px;
+}
+
+.main-menu__header--title {
+    font-weight: bold;
+}
+
+hr {
+    background-color: white;
+}
+
+/* -------------------- */
+
+/* Card Homepage */
+.card {
+    border-radius: 20px;
+}
+
+.card:hover {
+    box-shadow: 15px 15px 20px 5px rgba(0,0,0,0.7);
+}
+
+/* To align the text to the bottom of the card */
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    margin-top: auto;
 }
