@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Structures{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-center mb-5 mt-5">Liste des structures</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>ManagerFirstname</th>
+                    <th>ManagerLastname</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Address</th>
+                    <th>Active</th>
+                    <th>SellFood</th>
+                    <th>SellDrink</th>
+                    <th>SendNewsletter</th>
+                    <th>ScheduleManagement</th>
+                    <th>PrivateLesson</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for structure in structures %}
+                <tr>
+                    <td>{{ structure.id }}</td>
+                    <td>{{ structure.name }}</td>
+                    <td>{{ structure.managerFirstname }}</td>
+                    <td>{{ structure.managerLastname }}</td>
+                    <td>{{ structure.email }}</td>
+                    <td>{{ structure.password }}</td>
+                    <td>{{ structure.address }}</td>
+                    <td>{{ structure.active ? 'Yes' : 'No' }}</td>
+                    <td>{{ structure.sellFood ? 'Yes' : 'No' }}</td>
+                    <td>{{ structure.sellDrink ? 'Yes' : 'No' }}</td>
+                    <td>{{ structure.sendNewsletter ? 'Yes' : 'No' }}</td>
+                    <td>{{ structure.scheduleManagement ? 'Yes' : 'No' }}</td>
+                    <td>{{ structure.privateLesson ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <a href="{{ path('app_structure_show', {'id': structure.id}) }}">Voir</a>
+                        <a href="{{ path('app_structure_edit', {'id': structure.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="m-5">
+        <a href="{{ path('app_structure_new') }}" class="btn btn-outline-primary">Créer une nouvelle structure</a>
+    </div>
+{% endblock %}

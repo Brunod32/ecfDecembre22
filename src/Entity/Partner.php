@@ -55,6 +55,16 @@ class Partner
     #[ORM\OneToMany(mappedBy: 'partnerId', targetEntity: Structure::class)]
     private Collection $structures;
 
+    /**
+     * Transform to string function to template new structure to have partnerId
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
+
     public function __construct()
     {
         $this->structures = new ArrayCollection();
