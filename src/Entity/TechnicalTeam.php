@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TechnicalTeamRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,6 +36,28 @@ class TechnicalTeam implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $lastname = null;
+
+    #[ORM\OneToMany(mappedBy: 'technicalTeamId', targetEntity: Partner::class)]
+    private Collection $partners;
+
+    #[ORM\OneToMany(mappedBy: 'technicalTeamId', targetEntity: Structure::class)]
+    private Collection $structures;
+
+    public function __construct()
+    {
+        $this->partners = new ArrayCollection();
+        $this->structures = new ArrayCollection();
+    }
+
+    /**
+     * Transform to string function to template new partner to have TechnicalTeamId
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
 
     public function getId(): ?int
     {
@@ -125,6 +149,66 @@ class TechnicalTeam implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(?string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Partner>
+     */
+    public function getPartners(): Collection
+    {
+        return $this->partners;
+    }
+
+    public function addPartner(Partner $partner): self
+    {
+        if (!$this->partners->contains($partner)) {
+            $this->partners->add($partner);
+            $partner->setTechnicalTeamId($this);
+        }
+
+        return $this;
+    }
+
+    public function removePartner(Partner $partner): self
+    {
+        if ($this->partners->removeElement($partner)) {
+            // set the owning side to null (unless already changed)
+            if ($partner->getTechnicalTeamId() === $this) {
+                $partner->setTechnicalTeamId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Structure>
+     */
+    public function getStructures(): Collection
+    {
+        return $this->structures;
+    }
+
+    public function addStructure(Structure $structure): self
+    {
+        if (!$this->structures->contains($structure)) {
+            $this->structures->add($structure);
+            $structure->setTechnicalTeamId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStructure(Structure $structure): self
+    {
+        if ($this->structures->removeElement($structure)) {
+            // set the owning side to null (unless already changed)
+            if ($structure->getTechnicalTeamId() === $this) {
+                $structure->setTechnicalTeamId(null);
+            }
+        }
 
         return $this;
     }
