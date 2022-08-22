@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[Route('/partner')]
 class PartnerController extends AbstractController
@@ -22,7 +24,7 @@ class PartnerController extends AbstractController
     }
 
     #[Route('/new', name: 'app_partner_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PartnerRepository $partnerRepository): Response
+    public function new(Request $request, PartnerRepository $partnerRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $partner = new Partner();
         $form = $this->createForm(PartnerType::class, $partner);
@@ -30,6 +32,19 @@ class PartnerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $partnerRepository->add($partner, true);
+
+            // encode the password
+            $partner->setPassword(
+            $userPasswordHasher->hashPassword(
+                    $partner,
+                    $form->get('password')->getData()
+                )
+            );
+
+            // set the role
+            $partner->setRoles(['ROLE_PARTNER']);
+            $entityManager->persist($partner);
+            $entityManager->flush();
 
             return $this->redirectToRoute('app_partner_index', [], Response::HTTP_SEE_OTHER);
         }

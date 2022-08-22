@@ -3,19 +3,20 @@
 {% block title %}Modification partenaire{% endblock %}
 
 {% block body %}
+{% include ('_navbar.html.twig') %}
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header text-center mt-2">Modifier le partenaire</h1>
             </div>
         </div>
-    </div>
 
-    <div class="m-5">
-        {{ include('partner/_form.html.twig', {'button_label': 'Modifier'}) }}
+        <div class="m-5">
+            {{ include('partner/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-        <a href="{{ path('app_partner_index') }}" role="button" class="btn btn-outline-success mt-2">Retour à la liste</a>
+            <a href="{{ path('app_partner_index') }}" role="button" class="btn btn-outline-success mt-2">Retour à la liste</a>
 
-        {{ include('partner/_delete_form.html.twig') }}
+            {{ include('partner/_delete_form.html.twig') }}
+        </div>
     </div>
 {% endblock %}
