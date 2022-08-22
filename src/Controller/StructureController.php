@@ -3,14 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Structure;
-use App\Entity\TechnicalTeam;
 use App\Form\StructureType;
 use App\Repository\StructureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[Route('/structure')]
 class StructureController extends AbstractController
@@ -24,7 +24,7 @@ class StructureController extends AbstractController
     }
 
     #[Route('/new', name: 'app_structure_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, StructureRepository $structureRepository): Response
+    public function new(Request $request, StructureRepository $structureRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $structure = new Structure();
         $form = $this->createForm(StructureType::class, $structure);
@@ -32,6 +32,20 @@ class StructureController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $structureRepository->add($structure, true);
+
+        // encode the password
+        $structure->setPassword(
+            $userPasswordHasher->hashPassword(
+                    $structure,
+                    $form->get('password')->getData()
+                )
+            );
+
+            // Set the role
+            $structure->setRoles(['ROLE_STRUCTURE']);
+            $entityManager->persist($structure);
+            $entityManager->flush();
+
 
             return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
         }
