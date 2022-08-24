@@ -107,3 +107,8 @@ nav.main-menu.expanded,
     color: var(--uncheck-color);
     padding-left: 5px;
 }
+
+.hide {
+    /* opacity: 0; */
+    display: none;
+}

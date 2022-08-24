@@ -18,7 +18,7 @@
         <div class="container">
                 {% for structure in structures %}
 
-                <div class="card m-5">
+                <div class="card">
                     <div class="card-header text-center">
                         <h4 class="card-title">{{ structure.id }} - {{ structure.name }}</h4>
                     </div>
@@ -41,8 +41,8 @@
                         </div>
                     </div>
                     <div class="card-footer text-muted d-flex justify-content-around">
-                        <a href="{{ path('app_structure_show', {'id': structure.id}) }}">Voir</a>
-                        <a href="{{ path('app_structure_edit', {'id': structure.id}) }}">Modifier</a>
+                        <a href="{{ path('app_structure_show', {'id': structure.id}) }}" title="Voir"><i class="fa-solid fa-folder-open"></i></a>
+                        <a href="{{ path('app_structure_edit', {'id': structure.id}) }}" title="Modifier"><i class="fa-solid fa-pen"></i></a>
                     </div>
                 </div>                                           
                 {% else %}
