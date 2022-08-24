@@ -53,7 +53,7 @@ class AppUserAuthenticator extends AbstractLoginFormAuthenticator
         } else if (in_array("ROLE_PARTNER", $user->getRoles())) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         } else if (in_array("ROLE_STRUCTURE", $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('app_home'));
+            return new RedirectResponse($this->urlGenerator->generate('app_structure_consult'));
         }
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }

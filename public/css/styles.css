@@ -10,6 +10,8 @@
 body {
     --dashboard-background-color: black;
     --dashboard-items-color: rgb(219, 222, 222);
+    --check-color: lightgreen;
+    --uncheck-color: red;
 }
 
 /* -------------------- */
@@ -83,4 +85,23 @@ nav.main-menu.expanded,
 .card-text {
     margin-top: auto;
     text-decoration: none;
+}
+
+/* structure-consult page */
+.structure__btn--icon:hover {
+    color: white;
+}
+
+.structure__btn--btn:hover {
+    background-color: red;
+}
+
+.check {
+    color:var(--check-color);
+    padding-left: 5px;
+}
+
+.uncheck {
+    color: var(--uncheck-color);
+    padding-left: 5px;
 }
