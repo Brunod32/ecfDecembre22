@@ -19,7 +19,7 @@ body {
 /* Navbar */
 .main-menu {
 background-color: var(--dashboard-background-color);
-position: absolute;
+position: fixed;
 top: 0;
 bottom: 0;
 height: 100%;
@@ -40,7 +40,7 @@ nav.main-menu.expanded,
 .main-menu__list--item {
     list-style-type: none;
     vertical-align: middle;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 .main-menu__list--link {
@@ -86,6 +86,8 @@ nav.main-menu.expanded,
     margin-top: auto;
     text-decoration: none;
 }
+
+/* -------------------- */
 
 /* user-consult page */
 .user__btn--icon:hover {

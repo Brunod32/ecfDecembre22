@@ -9,59 +9,46 @@
             <div class="col-lg-12">
                 <h1 class="page-header text-center mb-5 mt-5">Liste des structures</h1>
             </div>
+            
+            <div class="my-3 mx-5">
+                <a href="{{ path('app_structure_new') }}" class="btn btn-outline-primary">Créer une nouvelle structure</a>
+            </div>
         </div>
-    
+
         <div class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>ManagerFirstname</th>
-                        <th>ManagerLastname</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Address</th>
-                        <th>Active</th>
-                        <th>SellFood</th>
-                        <th>SellDrink</th>
-                        <th>SendNewsletter</th>
-                        <th>ScheduleManagement</th>
-                        <th>PrivateLesson</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
                 {% for structure in structures %}
-                    <tr>
-                        <td>{{ structure.id }}</td>
-                        <td>{{ structure.name }}</td>
-                        <td>{{ structure.managerFirstname }}</td>
-                        <td>{{ structure.managerLastname }}</td>
-                        <td>{{ structure.email }}</td>
-                        <td>{{ structure.password }}</td>
-                        <td>{{ structure.address }}</td>
-                        <td>{{ structure.active ? 'Yes' : 'No' }}</td>
-                        <td>{{ structure.sellFood ? 'Yes' : 'No' }}</td>
-                        <td>{{ structure.sellDrink ? 'Yes' : 'No' }}</td>
-                        <td>{{ structure.sendNewsletter ? 'Yes' : 'No' }}</td>
-                        <td>{{ structure.scheduleManagement ? 'Yes' : 'No' }}</td>
-                        <td>{{ structure.privateLesson ? 'Yes' : 'No' }}</td>
-                        <td>
-                            <a href="{{ path('app_structure_show', {'id': structure.id}) }}">Voir</a>
-                            <a href="{{ path('app_structure_edit', {'id': structure.id}) }}">Modifier</a>
-                        </td>
-                    </tr>
+
+                <div class="card m-5">
+                    <div class="card-header text-center">
+                        <h4 class="card-title">{{ structure.id }} - {{ structure.name }}</h4>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div class="mt-3">
+                            <h5>Identité de la structure</h5>
+                            <p><strong>Prénom du manager:</strong> {{ structure.managerFirstname }}</p>
+                            <p><strong>Nom du manager:</strong> {{ structure.managerLastname }}</p>
+                            <p><strong>Email:</strong> {{ structure.email }}</p>
+                            <p><strong>Adresse:</strong> {{ structure.address }}</p>
+                            <p><strong>Actif:</strong> {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Permissions de la structure</h5>
+                            <p><strong>Vente de nourriture:</strong> {{ structure.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                            <p><strong>Vente de boissons:</strong> {{ structure.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                            <p><strong>Envoie de Newsletter:</strong> {{ structure.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                            <p><strong>Gestion planning:</strong> {{ structure.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                            <p><strong>Cours particulier:</strong> {{ structure.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-around">
+                        <a href="{{ path('app_structure_show', {'id': structure.id}) }}">Voir</a>
+                        <a href="{{ path('app_structure_edit', {'id': structure.id}) }}">Modifier</a>
+                    </div>
+                </div>                                           
                 {% else %}
-                    <tr>
-                        <td colspan="14">Aucun enregistrement trouvé</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    <p colspan="14">Aucun enregistrement trouvé</p>
+                {% endfor %}    
         </div>
-        <div class="m-5">
-            <a href="{{ path('app_structure_new') }}" class="btn btn-outline-primary">Créer une nouvelle structure</a>
-        </div>
+
     </div>
 {% endblock %}

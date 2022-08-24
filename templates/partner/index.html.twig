@@ -10,55 +10,46 @@
                 <h1 class="page-header text-center mb-5 mt-5">Liste des partenaires</h1>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Address</th>
-                    <th>Active</th>
-                    <th>Description</th>
-                    <th>SellFood</th>
-                    <th>SellDrink</th>
-                    <th>SendNewsletter</th>
-                    <th>ScheduleManagement</th>
-                    <th>PrivateLesson</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for partner in partners %}
-                <tr>
-                    <td>{{ partner.id }}</td>
-                    <td>{{ partner.name }}</td>
-                    <td>{{ partner.email }}</td>
-                    <td>{{ partner.password }}</td>
-                    <td>{{ partner.address }}</td>
-                    <td>{{ partner.active ? 'Yes' : 'No' }}</td>
-                    <td>{{ partner.description }}</td>
-                    <td>{{ partner.sellFood ? 'Yes' : 'No' }}</td>
-                    <td>{{ partner.sellDrink ? 'Yes' : 'No' }}</td>
-                    <td>{{ partner.sendNewsletter ? 'Yes' : 'No' }}</td>
-                    <td>{{ partner.scheduleManagement ? 'Yes' : 'No' }}</td>
-                    <td>{{ partner.privateLesson ? 'Yes' : 'No' }}</td>
-                    <td>
-                        <a href="{{ path('app_partner_show', {'id': partner.id}) }}">Voir</a>
-                        <a href="{{ path('app_partner_edit', {'id': partner.id}) }}">Modifier</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="13">Aucun enregistrement trouvé</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <div class="m-5">
+        <div class="mx-5 my-3">
             <a href="{{ path('app_partner_new') }}" class="btn btn-outline-primary">Créer un nouveau partenaire</a>
         </div>
+    </div>
+
+
+    <div class="container">
+        {% for partner in partners %}
+
+        <div class="card m-5">
+            <div class="card-header text-center">
+                <h4 class="card-title">{{ partner.id }} - {{ partner.name }}</h4>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <div class="mt-3">
+                    <h5>Identité du partenaire</h5>
+                    <p><strong>Email:</strong> {{ partner.email }}</p>
+                    <p><strong>Adresse:</strong> {{ partner.address }}</p>
+                    <p><strong>Description:</strong> {{ partner.description }}</p>
+                    <p><strong>Actif:</strong> {{ partner.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                </div>
+                <div class="mt-3">
+                    <h5>Permissions de la structure</h5>
+                    <p><strong>Vente de nourriture:</strong> {{ partner.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                    <p><strong>Vente de boisson:</strong> {{ partner.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                    <p><strong>Envoi de newsletter:</strong> {{ partner.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                    <p><strong>Gestion planning:</strong> {{ partner.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                    <p><strong>Cours particulier:</strong> {{ partner.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
+                </div>
+            </div>
+            <div class="card-footer text-muted d-flex justify-content-around">
+                <a href="{{ path('app_partner_show', {'id': partner.id}) }}">Voir</a>
+                <a href="{{ path('app_partner_edit', {'id': partner.id}) }}">Modifier</a>
+            </div>
+        </div>
+ 
+        {% else %}
+            <p colspan="13">Aucun enregistrement trouvé</p>
+        {% endfor %}
+            
     </div>
 {% endblock %}

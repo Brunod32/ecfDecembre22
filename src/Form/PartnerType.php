@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,42 +21,30 @@ class PartnerType extends AbstractType
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
             ->add('address', TextType::class)
-            ->add('active', ChoiceType::class, [
-                'choices' => [
-                    'Actif' => true,
-                    'Inactif' => false
-                ]
+            ->add('active', CheckboxType::class, [
+                'label' => 'Actif',
+                'required' => false,
             ])
             ->add('description', TextareaType::class)
-            ->add('sellFood', ChoiceType::class, [
-                'choices' => [
-                    'Actif' => true,
-                    'Inactif' => false
-                ]
+            ->add('sellFood', CheckboxType::class, [
+                'label' => 'Vente de nourriture',
+                'required' => false,
             ])
-            ->add('sellDrink', ChoiceType::class, [
-                'choices' => [
-                    'Actif' => true,
-                    'Inactif' => false
-                ]
+            ->add('sellDrink', CheckboxType::class, [
+                'label' => 'Vente de boisson',
+                'required' => false,
             ])
-            ->add('sendNewsletter', ChoiceType::class, [
-                'choices' => [
-                    'Actif' => true,
-                    'Inactif' => false
-                ]
+            ->add('sendNewsletter', CheckboxType::class, [
+                'label' => 'Envoi de newsletter',
+                'required' => false,
             ])
-            ->add('scheduleManagement', ChoiceType::class, [
-                'choices' => [
-                    'Actif' => true,
-                    'Inactif' => false
-                ]
+            ->add('scheduleManagement', CheckboxType::class, [
+                'label' => 'Gestion planning',
+                'required' => false,
             ])
-            ->add('privateLesson', ChoiceType::class, [
-                'choices' => [
-                    'Actif' => true,
-                    'Inactif' => false
-                ]
+            ->add('privateLesson', CheckboxType::class, [
+                'label' => 'Cours particulier',
+                'required' => false,
             ])
             ->add('technicalTeamId')
         ;
