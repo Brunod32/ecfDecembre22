@@ -87,12 +87,12 @@ nav.main-menu.expanded,
     text-decoration: none;
 }
 
-/* structure-consult page */
-.structure__btn--icon:hover {
+/* user-consult page */
+.user__btn--icon:hover {
     color: white;
 }
 
-.structure__btn--btn:hover {
+.user__btn--btn:hover {
     background-color: red;
 }
 

@@ -45,6 +45,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/structure, roles: ROLE_STRUCTURE }
+        - { path: ^/partner, roles: ROLE_PARTNER }
 
 when@test:
     security:

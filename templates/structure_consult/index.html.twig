@@ -6,48 +6,46 @@
 
 {% for structure in structures %}
     {% if structure.id is same as app.user.id %}
-    <div class="containe structure">
-        <div class="row">
-            <div class="col-lg-12 structure__title">
-                <h1 class="page-header text-center mt-5 mb-3">{{ structure.name }}</h1>
-            </div>
-            <div class="d-flex justify-content-center structure__btn">
-                <button class="btn btn-outline-primary structure__btn--btn">     
-                    <a href="{{ path('app_logout') }}">
-                        <i class="fa-solid fa-power-off fa-2x structure__btn--icon" title="Déconnexion"></i>
-                    </a>
-                </button>
+        <div class="containe user">
+            <div class="row">
+                <div class="col-lg-12 user__title">
+                    <h1 class="page-header text-center mt-5 mb-3">{{ structure.name }}</h1>
+                </div>
+                <div class="d-flex justify-content-center user__btn">
+                    <button class="btn btn-outline-primary user__btn--btn">     
+                        <a href="{{ path('app_logout') }}">
+                            <i class="fa-solid fa-power-off fa-2x user__btn--icon" title="Déconnexion"></i>
+                        </a>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    {% if app.user %}
+
+        <div class="container">
+            <section>
+                <p>
+                    <p class="mb-4">Bonjour {{ structure.managerFirstname }} {{ structure.managerLastname }},</p>
+                    <p>Retrouvez ici les informations relatives à votre structure.</p>
+                </p>
+                <div>
+                    <p>Votre email de contact: {{ structure.email }}</p>
+                    <p>Addresse de votre structure: {{ structure.address | capitalize }}</p>
+                </div>
+            </section>
+
+            <section class="mt-5">
+                <h2>Vos permissions</h2>
+                <ul>
+                    <li>Compte actif: {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                    <li>Vendre de la nourriture: {{ structure.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                    <li>Vendre de la nourriture: {{ structure.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                    <li>Envoyer des newsletters: {{ structure.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                    <li>Utiliser le gestionnaire de planning: {{ structure.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                    <li>Proposer des cours particuliers: {{ structure.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                </ul>
+            </section>
+        </div>
     {% endif %}
-
-<div class="container">
-                <section>
-                    <p>
-                        <p class="mb-4">Bonjour {{ structure.managerFirstname }} {{ structure.managerLastname }},</p>
-                        <p>Retrouvez ici les informations relatives à votre structure.</p>
-                    </p>
-                    <div>
-                        <p>Votre email de contact: {{ structure.email }}</p>
-                        <p>Addresse de votre structure: {{ structure.address | capitalize }}</p>
-                    </div>
-                </section>
-
-                <section class="mt-5">
-                    <h2>Vos permissions</h2>
-                    <ul>
-                        <li>Compte actif: {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                        <li>Vendre de la nourriture: {{ structure.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                        <li>Vendre de la nourriture: {{ structure.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                        <li>Envoyer des newsletters: {{ structure.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                        <li>Utiliser le gestionnaire de planning: {{ structure.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                        <li>Proposer des cours particuliers: {{ structure.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    </ul>
-                </section>
-        {% endif %}
-    {% endfor %}
-</div>
+{% endfor %}
     
 {% endblock %}

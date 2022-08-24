@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-#[Route('/structure')]
+#[Route('/admin/structure')]
 class StructureController extends AbstractController
 {
     #[Route('/', name: 'app_structure_index', methods: ['GET'])]

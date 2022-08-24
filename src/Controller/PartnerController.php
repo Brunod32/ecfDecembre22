@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-#[Route('/partner')]
+#[Route('/admin/partner')]
 class PartnerController extends AbstractController
 {
     #[Route('/', name: 'app_partner_index', methods: ['GET'])]

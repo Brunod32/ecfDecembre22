@@ -51,7 +51,7 @@ class AppUserAuthenticator extends AbstractLoginFormAuthenticator
         if (in_array("ROLE_ADMIN", $user->getRoles())) {
             return new RedirectResponse($this->urlGenerator->generate('app_technical_team'));
         } else if (in_array("ROLE_PARTNER", $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('app_home'));
+            return new RedirectResponse($this->urlGenerator->generate('app_partner_consult'));
         } else if (in_array("ROLE_STRUCTURE", $user->getRoles())) {
             return new RedirectResponse($this->urlGenerator->generate('app_structure_consult'));
         }
