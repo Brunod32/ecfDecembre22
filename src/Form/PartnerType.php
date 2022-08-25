@@ -22,28 +22,40 @@ class PartnerType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('address', TextType::class)
             ->add('active', CheckboxType::class, [
-                'label' => 'Actif',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('description', TextareaType::class)
             ->add('sellFood', CheckboxType::class, [
-                'label' => 'Vente de nourriture',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('sellDrink', CheckboxType::class, [
-                'label' => 'Vente de boisson',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('sendNewsletter', CheckboxType::class, [
-                'label' => 'Envoi de newsletter',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('scheduleManagement', CheckboxType::class, [
-                'label' => 'Gestion planning',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('privateLesson', CheckboxType::class, [
-                'label' => 'Cours particulier',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('technicalTeamId')

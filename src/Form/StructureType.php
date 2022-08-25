@@ -23,27 +23,39 @@ class StructureType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('address', TextType::class)
             ->add('active', CheckboxType::class, [
-                'label' => 'Actif',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('sellFood', CheckboxType::class, [
-                'label' => 'Vente de nourriture',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('sellDrink', CheckboxType::class, [
-                'label' => 'Vente de boisson',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('sendNewsletter', CheckboxType::class, [
-                'label' => 'Envoi de newsletter',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('scheduleManagement', CheckboxType::class, [
-                'label' => 'Gestion plannning',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('privateLesson', CheckboxType::class, [
-                'label' => 'Cours particulier',
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
             ])
             ->add('technicalTeamId')
