@@ -6,12 +6,18 @@
 }
 
 /* -------------------- */
-
+/* CSS general */
 body {
     --dashboard-background-color: black;
     --dashboard-items-color: rgb(219, 222, 222);
     --check-color: lightgreen;
     --uncheck-color: red;
+}
+
+
+.mainContainer {
+    /* width: calc(100vw - 100px); */
+    margin-left: 150px;
 }
 
 /* -------------------- */
@@ -33,8 +39,8 @@ z-index: 1000;
 nav.main-menu.expanded,
 .main-menu__list--item,
 .main-menu__list--logout {
-    width:250px;
-    overflow:visible;
+    width: 200px;
+    overflow: visible;
 }
 
 .main-menu__list--item {
@@ -58,11 +64,15 @@ nav.main-menu.expanded,
 }
 
 .main-menu__list--title {
-    padding-left: 50px;
+    padding-left: 30px;
 }
 
 .fa-dumbbell {
     transform: rotate(-45deg);
+}
+
+.menuMobile {
+    display: none;
 }
 
 /* -------------------- */
@@ -111,4 +121,42 @@ nav.main-menu.expanded,
 .hide {
     /* opacity: 0; */
     display: none;
+}
+
+@media screen and (max-width: 1030px) {
+    body {
+        font-size: 18px;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    .menuMobile {
+        display: flex;
+    }
+
+    .main-menu__list--i {
+        padding-top: 0;
+        padding-top: 15px;
+    }
+
+    .main-menu__list--logout {
+        position: relative;
+        bottom: 0;
+    }
+
+    .MenuMobile {
+        background-color: var(--dashboard-background-color);
+        height: 70px;
+    }
+
+    .mainContainer {
+        margin-left: 0;
+    }
+
+    .btn-new {
+        display: flex;
+        justify-content: center;
+    }
 }
