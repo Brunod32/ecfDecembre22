@@ -119,7 +119,6 @@ nav.main-menu.expanded,
 }
 
 .hide {
-    /* opacity: 0; */
     display: none;
 }
 
@@ -159,4 +158,9 @@ nav.main-menu.expanded,
         display: flex;
         justify-content: center;
     }
+
+    .card__infos {
+        text-align: center;
+    }
+    
 }
