@@ -145,7 +145,7 @@ nav.main-menu.expanded,
         bottom: 0;
     }
 
-    .MenuMobile {
+    .menuMobile__ul {
         background-color: var(--dashboard-background-color);
         height: 70px;
     }
