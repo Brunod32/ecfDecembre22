@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+<div class="row justify-content-between">
+    <div class="col-12 col-lg-5 ml-auto">
+        {# {{ form_widget(form.password) }} #}
+        {{ form_row(form.password, { label : 'Nouveau mot de passe'}) }}
+    </div>
+</div>
+<button class="btn btn-outline-primary ml-5 mt-2">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+

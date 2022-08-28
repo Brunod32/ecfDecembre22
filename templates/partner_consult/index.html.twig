@@ -31,6 +31,10 @@
                     <p>Votre email de contact: {{ partner.email }}</p>
                     <p>Votre addresse: {{ partner.address | capitalize }}</p>
                 </div>
+                <div>
+                    <a href="{{ path('app_partner_new_password', {'id': partner.id}) }}">Modifier</a>
+                    mon mot de passe
+                </div>
             </section>
 
             <section class="mt-5">
