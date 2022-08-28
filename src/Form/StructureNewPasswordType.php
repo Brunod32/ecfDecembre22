@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Partner;
+use App\Entity\Structure;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 
-class PartnerNewPasswordType extends AbstractType
+class StructureNewPasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -44,7 +44,7 @@ class PartnerNewPasswordType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Partner::class,
+            'data_class' => Structure::class,
         ]);
     }
 }

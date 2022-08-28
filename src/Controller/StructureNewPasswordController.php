@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Partner;
-use App\Form\PartnerNewPasswordType;
+use App\Entity\Structure;
+use App\Form\StructureNewPasswordType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,27 +11,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/partner')]
-class PartnerNewPasswordController extends AbstractController
+#[Route('/structure')]
+class StructureNewPasswordController extends AbstractController
 {
-    #[Route('/partner/newpassword/{id}', name: 'app_partner_new_password')] 
+    #[Route('/structure/newpassword/{id}', name: 'app_structure_new_password')] 
     public function newPassword(
-        Partner $partner, 
+        Structure $structure, 
         Request $request, 
         UserPasswordHasherInterface $userPasswordHasher, 
         EntityManagerInterface $entityManager
     ): Response
     
     {       
-        $form = $this->createForm(PartnerNewPasswordType::class, $partner);
+        $form = $this->createForm(StructureNewPasswordType::class, $structure);
         $form->handleRequest($request);
 
         //Check if from is Submit and valid
         $plainPassword = $form->get('password')->getData();
         if ($form->isSubmitted() && $form->isValid()) {
-            $partner->setPassword(
+            $structure->setPassword(
                 $userPasswordHasher->hashPassword(
-                    $partner,
+                    $structure,
                     $plainPassword,
                 )
             );
@@ -40,17 +40,17 @@ class PartnerNewPasswordController extends AbstractController
             $entityManager->flush();
 
             // Redirect to validation page
-            return $this->redirectToRoute('app_partner_new_password_validated');
+            return $this->redirectToRoute('app_structure_new_password_validated');
         }
 
-        return $this->render('partner_new_password/newPass.html.twig', [
+        return $this->render('structure_new_password/newPass.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/partner/newpassword-validated', name: 'app_partner_new_password_validated', methods: 'GET')]
+    #[Route('/structure/newpassword-validated', name: 'app_structure_new_password_validated', methods: 'GET')]
     public function newPasswordValidated(): Response
     {
-        return $this->render('partner_new_password/validationPassword.html.twig', []);
+        return $this->render('structure_new_password/validationPassword.html.twig', []);
     }
 }

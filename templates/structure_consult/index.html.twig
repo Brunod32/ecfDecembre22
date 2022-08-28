@@ -31,6 +31,10 @@
                     <p>Votre email de contact: {{ structure.email }}</p>
                     <p>Addresse de votre structure: {{ structure.address | capitalize }}</p>
                 </div>
+                <div>
+                    <a href="{{ path('app_structure_new_password', {'id': structure.id}) }}">Modifier</a>
+                    mon mot de passe
+                </div>
             </section>
 
             <section class="mt-5">
