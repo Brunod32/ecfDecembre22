@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Structure;
 use App\Form\StructureType;
+use App\Form\StructureUpdateType;
 use App\Repository\StructureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,7 +68,7 @@ class StructureController extends AbstractController
     #[Route('/{id}/edit', name: 'app_structure_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Structure $structure, StructureRepository $structureRepository): Response
     {
-        $form = $this->createForm(StructureType::class, $structure);
+        $form = $this->createForm(StructureUpdateType::class, $structure);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

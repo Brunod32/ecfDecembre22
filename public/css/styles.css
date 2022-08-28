@@ -12,6 +12,7 @@ body {
     --dashboard-items-color: rgb(219, 222, 222);
     --check-color: lightgreen;
     --uncheck-color: red;
+    --dashboard-search-hover: blue;
 }
 
 
@@ -88,12 +89,12 @@ nav.main-menu.expanded,
 }
 
 /* To align the text to the bottom of the card */
-.card-body {
+.container__card--body {
     display: flex;
     flex-direction: column;
 }
 
-.card-text {
+.container__card--text {
     margin-top: auto;
     text-decoration: none;
 }
@@ -121,6 +122,33 @@ nav.main-menu.expanded,
 
 .hide {
     display: none;
+}
+
+.mainContainer__dashboard--links {
+    text-decoration: none;
+}
+
+.mainContainer__search--searchBtn {
+    border-radius: 100%;
+    width: 45px;
+    height: auto;
+    margin-left: 10px;
+    background-color: lightskyblue;
+    color:white;
+    border-color: white;
+}
+
+.mainContainer__search--searchBar {
+    width: 50vw;
+    height: 45px;
+    border-radius: 25px;
+    border-color: var(--dashboard-items-color);
+    padding-left: 10px;
+}
+
+.mainContainer__search--searchBar:hover,
+.mainContainer__search--searchBtn:hover {
+    border-color: var(--dashboard-search-hover);
 }
 
 @media screen and (max-width: 1030px) {

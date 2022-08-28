@@ -9,23 +9,23 @@
     <h2 class="my-5">Vous souhaitez vous connecter en tant que:</h2>
 
     <div class="container">
-        <div class="row justify-content-around gap-3">
+        <div class="row justify-content-around gap-3 container__card">
             <div class="card" style="width: 20rem;">
                 <img class="card-img-top" src="{{ asset('/img/technicalTeam.png') }}" alt="Card image cap">
-                <div class="card-body">
-                    <a href="{{ path('app_login') }}" class="card-text text-center">Equipe technique</a>
+                <div class="card-body container__card--body">
+                    <a href="{{ path('app_login') }}" class="card-text container__card--text text-center">Equipe technique</a>
                 </div>
             </div>
             <div class="card" style="width: 20rem;">
                 <img class="card-img-top" src="{{ asset('/img/partner.png') }}" alt="Card image cap">
-                <div class="card-body">
-                    <a href="{{ path('app_login') }}" class="card-text text-center">Partenaire</a>
+                <div class="card-body container__card--body">
+                    <a href="{{ path('app_login') }}" class="card-text container__card--text text-center">Partenaire</a>
                 </div>
             </div>
             <div class="card" style="width: 20rem;">
                 <img class="card-img-top" src="{{ asset('/img/salleGym.png') }}" alt="Card image cap">
-                <div class="card-body">
-                    <a href="{{ path('app_login') }}" class="card-text text-center">Salle de sport</a>
+                <div class="card-body container__card--body">
+                    <a href="{{ path('app_login') }}" class="card-text container__card--text text-center">Salle de sport</a>
                 </div>
             </div>
         </div>
