@@ -183,11 +183,6 @@ nav.main-menu.expanded,
         margin-left: 0;
     }
 
-    .btn-new {
-        display: flex;
-        justify-content: center;
-    }
-
     .card__infos {
         text-align: center;
     }

@@ -17,10 +17,18 @@ use Doctrine\ORM\EntityManagerInterface;
 class StructureController extends AbstractController
 {
     #[Route('/', name: 'app_structure_index', methods: ['GET'])]
-    public function index(StructureRepository $structureRepository): Response
+    #[Route('/structure/{page}', name: 'app_structure_pagination', methods: ['GET'])]
+    public function index(
+        StructureRepository $structureRepository,
+        int $page = 1,
+    ): Response
     {
+        $nbStructure = $structureRepository->findStructurePaginationCount();
         return $this->render('structure/index.html.twig', [
-            'structures' => $structureRepository->findAll(),
+            // 'structures' => $structureRepository->findAll(),
+            'structures' => $structureRepository->findStructurePagination($page),
+            'currentPage' => $page,
+            'maxStructure' => $nbStructure > ($page * 2)
         ]);
     }
 

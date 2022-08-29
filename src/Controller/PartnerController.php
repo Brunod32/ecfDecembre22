@@ -17,10 +17,18 @@ use Doctrine\ORM\EntityManagerInterface;
 class PartnerController extends AbstractController
 {
     #[Route('/', name: 'app_partner_index', methods: ['GET'])]
-    public function index(PartnerRepository $partnerRepository): Response
+    #[Route('/partner/{page}', name: 'app_partner_pagination', methods: ['GET'])]
+    public function index(
+        PartnerRepository $partnerRepository,
+        int $page = 1,
+    ): Response
     {
+        $nbPartner = $partnerRepository->findPartnerPaginationCount();
         return $this->render('partner/index.html.twig', [
-            'partners' => $partnerRepository->findAll(),
+            // 'partners' => $partnerRepository->findAll(),
+            'partners' => $partnerRepository->findPartnerPagination($page),
+            'currentPage' => $page,
+            'maxPartner' => $nbPartner > ($page * 2)
         ]);
     }
 

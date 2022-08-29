@@ -21,6 +21,20 @@ class StructureRepository extends ServiceEntityRepository
         parent::__construct($registry, Structure::class);
     }
 
+    //Pagination
+    // Limit à 2 pendant mise en place, changer à la fin des développements
+    public function findStructurePagination(int $page = 1, int $limit = 2): array
+    {
+        return $this->findBy([], [], $limit, ($page -1 ) * 2);
+    }
+
+    public function findStructurePaginationCount(): int
+    {
+        $structure = $this->findAll();
+        return $this->count([]);
+    }
+
+
     public function add(Structure $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

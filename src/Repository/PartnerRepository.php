@@ -21,14 +21,27 @@ class PartnerRepository extends ServiceEntityRepository
         parent::__construct($registry, Partner::class);
     }
 
+    // Pagination
+    // Limit à 2 pendant mise en place, changer à la fin des développements
+    public function findPartnerPagination(int $page = 1, int $limit = 2): array
+    {
+        return $this->findBy([], [], $limit, ($page - 1 ) * 2);
+    }
+
+    public function findPartnerPaginationCount(): int
+    {
+        $partner = $this->findAll();
+        return $this->count([]);
+    }
+
     public function add(Partner $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
-        }
-    }
+        }    
+    }    
 
     public function remove(Partner $entity, bool $flush = false): void
     {
@@ -36,8 +49,8 @@ class PartnerRepository extends ServiceEntityRepository
 
         if ($flush) {
             $this->getEntityManager()->flush();
-        }
-    }
+        }    
+    }    
 
 //    /**
 //     * @return Partner[] Returns an array of Partner objects
