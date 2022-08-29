@@ -8,11 +8,13 @@
 /* -------------------- */
 /* CSS general */
 body {
+    --general-background-color: rgba(211, 211, 211, 0.5);
     --dashboard-background-color: black;
     --dashboard-items-color: rgb(219, 222, 222);
     --check-color: lightgreen;
     --uncheck-color: red;
     --dashboard-search-hover: blue;
+    background-color: var(--general-background-color);
 }
 
 
