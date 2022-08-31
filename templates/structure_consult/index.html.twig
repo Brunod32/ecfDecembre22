@@ -22,32 +22,36 @@
         </div>
 
         <div class="container">
-            <section>
-                <p>
-                    <p class="mb-4">Bonjour {{ structure.managerFirstname }} {{ structure.managerLastname }},</p>
-                    <p>Retrouvez ici les informations relatives à votre structure.</p>
-                </p>
-                <div>
-                    <p>Votre email de contact: {{ structure.email }}</p>
-                    <p>Addresse de votre structure: {{ structure.address | capitalize }}</p>
-                </div>
-                <div>
-                    <a href="{{ path('app_structure_new_password', {'id': structure.id}) }}">Modifier</a>
-                    mon mot de passe
-                </div>
-            </section>
+            <div class="row mt-5">
+                <div class="row row-cols-12 row-cols-lg-3 d-flex justify-content-around structureDetails">
+                    <section class="mt-5">
+                        <p>
+                            <p class="mb-4">Bonjour {{ structure.managerFirstname }} {{ structure.managerLastname }},</p>
+                            <p>Retrouvez ici les informations relatives à votre structure.</p>
+                        </p>
+                        <div>
+                            <p>Votre email de contact: {{ structure.email }}</p>
+                            <p>Addresse de votre structure: {{ structure.address | capitalize }}</p>
+                        </div>
+                        <div>
+                            <a href="{{ path('app_structure_new_password', {'id': structure.id}) }}" class="changePassword">Modifier</a>
+                            mon mot de passe
+                        </div>
+                    </section>
 
-            <section class="mt-5">
-                <h2>Vos permissions</h2>
-                <ul>
-                    <li>Compte actif: {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Vendre de la nourriture: {{ structure.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Vendre de la nourriture: {{ structure.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Envoyer des newsletters: {{ structure.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Utiliser le gestionnaire de planning: {{ structure.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Proposer des cours particuliers: {{ structure.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                </ul>
-            </section>
+                    <section class="mt-5">
+                        <h2>Vos permissions</h2>
+                        <ul class="structurePerms">
+                            <li>Compte actif: {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li>Vendre de la nourriture: {{ structure.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li>Vendre de la nourriture: {{ structure.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li>Envoyer des newsletters: {{ structure.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li>Utiliser le gestionnaire de planning: {{ structure.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li>Proposer des cours particuliers: {{ structure.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
         </div>
     {% endif %}
 {% endfor %}

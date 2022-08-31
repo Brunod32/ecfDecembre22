@@ -11,9 +11,11 @@ body {
     --general-background-color: rgba(211, 211, 211, 0.5);
     --dashboard-background-color: black;
     --dashboard-items-color: rgb(219, 222, 222);
-    --check-color: lightgreen;
-    --uncheck-color: red;
-    --dashboard-search-hover: blue;
+    --check-color: rgb(144, 238, 144);
+    --uncheck-color: rgb(255, 0, 0);
+    --dashboard-search-hover: rgb(0, 0, 255);
+    --search-item-color: rgb(135, 206, 250);
+
     background-color: var(--general-background-color);
 }
 
@@ -126,6 +128,17 @@ nav.main-menu.expanded,
     display: none;
 }
 
+.changePassword {
+    text-decoration: none;
+}
+
+.partnerPerms,
+.structurePerms {
+    list-style-type: none;
+}
+
+/* -------------------- */
+
 .mainContainer__dashboard--links {
     text-decoration: none;
 }
@@ -135,7 +148,7 @@ nav.main-menu.expanded,
     width: 45px;
     height: auto;
     margin-left: 10px;
-    background-color: lightskyblue;
+    background-color: var(--search-item-color);
     color:white;
     border-color: white;
 }
@@ -186,6 +199,11 @@ nav.main-menu.expanded,
     }
 
     .card__infos {
+        text-align: center;
+    }
+
+    .partnerDetails,
+    .structureDetails {
         text-align: center;
     }
     

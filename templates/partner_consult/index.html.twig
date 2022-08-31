@@ -22,32 +22,36 @@
         </div>
 
         <div class="container">
-            <section>
-                <p>
-                    <p class="mb-4">Bonjour {{ partner.name }},</p>
-                    <p>Retrouvez ici vos informations personnelles.</p>
-                </p>
-                <div>
-                    <p>Votre email de contact: {{ partner.email }}</p>
-                    <p>Votre addresse: {{ partner.address | capitalize }}</p>
-                </div>
-                <div>
-                    <a href="{{ path('app_partner_new_password', {'id': partner.id}) }}">Modifier</a>
-                    mon mot de passe
-                </div>
-            </section>
+            <div class="row mt-5">
+                <div class="row row-cols-12 row-cols-lg-3 d-flex justify-content-around partnerDetails">
+                    <section class="mt-5">
+                        <p>
+                            <p class="mb-4">Bonjour {{ partner.name }},</p>
+                            <p>Retrouvez ici vos informations personnelles.</p>
+                        </p>
+                        <div>
+                            <p>Votre email de contact: {{ partner.email }}</p>
+                            <p>Votre addresse: {{ partner.address | capitalize }}</p>
+                        </div>
+                        <div>
+                            <a href="{{ path('app_partner_new_password', {'id': partner.id}) }}" class="changePassword">Modifier</a>
+                            mon mot de passe
+                        </div>
+                    </section>
 
-            <section class="mt-5">
-                <h2>Vos permissions</h2>
-                <ul>
-                    <li>Compte actif: {{ partner.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Vendre de la nourriture: {{ partner.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Vendre de la nourriture: {{ partner.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Envoyer des newsletters: {{ partner.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Utiliser le gestionnaire de planning: {{ partner.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                    <li>Proposer des cours particuliers: {{ partner.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                </ul>
-            </section>
+                    <section class="mt-5">
+                        <h2>Vos permissions</h2>
+                        <ul class="partnerPerms">
+                            <li><strong>Compte actif:</strong> {{ partner.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><strong>Vendre de la nourriture:</strong> {{ partner.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><strong>Vendre de la nourriture:</strong> {{ partner.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><strong>Envoyer des newsletters:</strong> {{ partner.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><strong>Utiliser le gestionnaire de planning:</strong> {{ partner.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><strong>Proposer des cours particuliers:</strong> {{ partner.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
         </div>
 
     {% endif %}
