@@ -13,6 +13,9 @@
         </div>
 
         <div class="m-5">
+            <div class="d-flex justify-content-center">
+                <a href="{{ path('app_password_generator') }}" target="_blank" class="btn btn-outline-primary">Générateur de mot de passe</a>
+            </div>
             {{ include('partner/_form.html.twig') }}
 
             <a href="{{ path('app_partner_index') }}" class="btn btn-outline-success mt-3">Retour à la liste</a>
