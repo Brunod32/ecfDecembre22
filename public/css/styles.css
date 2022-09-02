@@ -114,7 +114,7 @@ nav.main-menu.expanded,
     color: white;
 }
 
-.user__btn--btn:hover {
+.user__btn--btnDisconnect:hover {
     background-color: red;
 }
 

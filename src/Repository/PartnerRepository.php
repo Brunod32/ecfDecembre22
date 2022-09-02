@@ -33,6 +33,19 @@ class PartnerRepository extends ServiceEntityRepository
         $partner = $this->findAll();
         return $this->count([]);
     }
+    
+    // Search
+    public function searchPartner(?string $search): array
+    {
+        $qb = $this->createQueryBuilder('p');
+        $query = $qb->select('p')
+        // Pour éviter les injections SQL
+            ->where('p.name LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 
     public function add(Partner $entity, bool $flush = false): void
     {

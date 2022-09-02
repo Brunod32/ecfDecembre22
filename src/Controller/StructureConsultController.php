@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Partner;
 use App\Repository\StructureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,14 @@ class StructureConsultController extends AbstractController
     {
         return $this->render('structure_consult/index.html.twig', [
             'structures' => $structureRepository->findAll(),
+        ]);
+    }
+    
+    #[Route('/structure-consult/{id}', name: 'app_structure_consult_show', methods: ['GET'])]
+    public function show(Partner $partner): Response
+    {
+        return $this->render('partner/show.html.twig', [
+            'partner' => $partner,
         ]);
     }
 }

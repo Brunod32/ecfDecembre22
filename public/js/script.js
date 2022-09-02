@@ -1,8 +1,4 @@
-// function showActive() {
-//     let result = "<?php showActive(); ?>"
-//     document.write(result);
-// }
-
+// Manage password copy paste
 let btnCopy = document.getElementById("btnCopy");
 let passwordToCopy = document.getElementById('passwordToCopy');
 
@@ -14,30 +10,15 @@ btnCopy.addEventListener("click", () => {
 
 
 
+// let cardToHide = document.getElementById('cardToHide');
 
+// function showActive() {
+//     // console.log('btn actif');
+//     cardToHide.classList.add('hide');
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-let cardToHide = document.getElementById('cardToHide');
-
-function showActive() {
-    // console.log('btn actif');
-    cardToHide.classList.add('hide');
-}
-
-function showInactive() {
-    // console.log('btn inactif');
-    cardToHide.classList.remove('hide');
-}
+// function showInactive() {
+//     // console.log('btn inactif');
+//     cardToHide.classList.remove('hide');
+// }
 
