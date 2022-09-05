@@ -63,6 +63,16 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private ?Partner $partnerId = null;
 
+    /**
+     * Transform to string function to template parnterConsult to have structure ref
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

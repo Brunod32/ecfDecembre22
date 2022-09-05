@@ -6,6 +6,7 @@
 }
 
 /* -------------------- */
+
 /* CSS general */
 body {
     --general-background-color: rgba(211, 211, 211, 0.5);
@@ -128,7 +129,8 @@ nav.main-menu.expanded,
     padding-left: 5px;
 }
 
-.changePassword {
+.changePassword,
+.partnerDetails__structurelist {
     text-decoration: none;
 }
 
@@ -186,7 +188,7 @@ nav.main-menu.expanded,
 
 /* -------------------- */
 
-/* Passwor generator page */
+/* Password generator page */
 
 #passwordToCopy {
     border-color: var(--dashboard-search-hover);
@@ -195,6 +197,13 @@ nav.main-menu.expanded,
     margin: 10px;
 }
 
+/* -------------------- */
+
+/* Seach page */
+
+.btnBack:hover {
+    color: var(--dashboard-items-color);
+}
 
 @media screen and (max-width: 1030px) {
     body {
