@@ -30,11 +30,8 @@
                             <a href="{{ path('app_partner_show', {'id': partnersSearch.id}) }}" class="ms-5">Détails du partenaire</a>
                         </p>
                     {% else %}
-                        <div class="d-flex justify-content-center mb-3">
-                            <i class="fa-solid fa-poop fa-2x mx-2"></i>
-                        </div>
                         <div class="d-flex justify-content-center">
-                            Aucun partenaire ne correspond à votre recherche.
+                            <p>Aucun résultat ne correspond à votre recherche.</p>
                         </div>
                 {% endfor %}
             {% endif %}
@@ -49,11 +46,8 @@
                             <a href="{{ path('app_partner_consult_show', {'id': partnersSearch.id}) }}" class="ms-5">Détails du partenaire</a>
                         </p>
                     {% else %}
-                        <div class="d-flex justify-content-center mb-3">
-                            <i class="fa-solid fa-poop fa-2x mx-2"></i>
-                        </div>
                         <div class="d-flex justify-content-center">
-                            Aucun partenaire ne correspond à votre recherche.
+                            <p>Aucun résultat ne correspond à votre recherche.</p>
                         </div>
                 {% endfor %}
             {% endif %}
@@ -68,11 +62,8 @@
                             <a href="{{ path('app_structure_consult_show', {'id': partnersSearch.id}) }}" class="ms-5">Détails du partenaire</a>
                         </p>
                     {% else %}
-                        <div class="d-flex justify-content-center mb-3">
-                            <i class="fa-solid fa-poop fa-2x mx-2"></i>
-                        </div>
                         <div class="d-flex justify-content-center">
-                            Aucun partenaire ne correspond à votre recherche.
+                            <p>Aucun résultat ne correspond à votre recherche.</p>
                         </div>
                 {% endfor %}
             {% endif %}

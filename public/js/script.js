@@ -1,24 +1,14 @@
 // Manage password copy paste
 let btnCopy = document.getElementById("btnCopy");
 let passwordToCopy = document.getElementById('passwordToCopy');
+let btnNewPass = document.getElementById('btnNewPass');
 
 btnCopy.addEventListener("click", () => {
     passwordToCopy.select();
-    document.execCommand('copy');
+    navigator.clipboard.writeText(passwordToCopy.value);
     btnCopy.innerText = 'Copié';
 });
 
-
-
-// let cardToHide = document.getElementById('cardToHide');
-
-// function showActive() {
-//     // console.log('btn actif');
-//     cardToHide.classList.add('hide');
-// }
-
-// function showInactive() {
-//     // console.log('btn inactif');
-//     cardToHide.classList.remove('hide');
-// }
-
+btnNewPass.addEventListener("click", () => {
+    location.reload();
+});
