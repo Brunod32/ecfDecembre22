@@ -27,12 +27,10 @@
                 {% else %}
                     <li class="page-item"><a class="page-link" href="{{ path('app_partner_pagination', {'page': currentPage - 1 }) }}"><i class="fa-solid fa-angle-left fa-2x"></i></a></li>
                 {% endif %}
-                {# si Js 
-                    <button class="btn btn-outline-success my-auto" id="activePartnerBtn" onclick="showActive()">Actifs</button>
-                    <button class="btn btn-outline-warning my-auto" id="unactivePartnerBtn" onclick="showInactive()">Inactifs</button> #}
-                    {# Si pas js#}
-                    <a href="{{ path('app_partner_index') }}" class="btn btn-outline-success my-auto">Actifs</a>
-                    <a href="{{ path('app_partner_index') }}" class="btn btn-outline-warning my-auto">Inactifs</a>
+                 
+                    <button class="btn btn-outline-success my-auto" id="activePartnerBtn">Actifs</button>
+                    <button class="btn btn-outline-warning my-auto" id="unactivePartnerBtn">Inactifs</button>
+                    
                 {% if maxPartner %}
                     <li class="page-item"><a class="page-link" href="{{ path('app_partner_pagination', {'page': currentPage + 1}) }}"><i class="fa-solid fa-angle-right fa-2x"></i></a></li>
                 {% else %}
