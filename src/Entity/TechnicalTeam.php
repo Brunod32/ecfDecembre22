@@ -52,13 +52,14 @@ class TechnicalTeam implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Transform to string function to template new partner to have TechnicalTeamId
+     * Transform to string function to template new partner to have TechnicalTeam name
      * 
      * @return string
      */
     public function __toString()
     {
-        return (string) $this->getId();
+        $fullname = $this->getFirstname() .' '. $this->getLastName();
+        return (string) $fullname;
     }
 
     public function getId(): ?int

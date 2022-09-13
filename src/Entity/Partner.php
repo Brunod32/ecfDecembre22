@@ -63,13 +63,13 @@ class Partner implements PasswordAuthenticatedUserInterface, UserInterface
     private Collection $structures;
 
     /**
-     * Transform to string function to template new structure to have partnerId
+     * Transform to string function to template new structure to have partner name
      * 
      * @return string
      */
     public function __toString()
     {
-        return (string) $this->getId();
+        return (string) $this->getName();
     }
 
     public function __construct()
