@@ -22,12 +22,12 @@ class SearchController extends AbstractController
     #[Route('/search', name: 'app_search')]
     public function index(Request $request, PartnerRepository $partnerRepository): Response
     {
-        $search = $request->query->get('search');
-        $partnersSearches = $partnerRepository->searchPartner($search);
+        // $search = $request->query->get('search');
+        // $partnersSearches = $partnerRepository->searchPartner($search);
         
         return $this->render('search/index.html.twig', [
-            'partnersSearches' => $partnersSearches,
-            'search' => $search
+            // 'partnersSearches' => $partnersSearches,
+            // 'search' => $search
         ]);
     }
 }

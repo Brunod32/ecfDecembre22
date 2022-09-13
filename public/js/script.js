@@ -18,61 +18,64 @@ window.onload = () => {
     });
 }
 
-// function getPartners() {
-//     const headers = new Headers();
-//     headers.append('Content-Type', 'application/ld+json');
+// Dynamic search for partner
+const partnerCardTemplate = document.querySelector("[data-partner-template]");
+const partnerCardContainer = document.querySelector("[data-partner-cards-container]");
+const searchInput = document.querySelector("[data-search]");
 
-//     const init = {
-//         method: 'GET',
-//         headers: headers
-//     }
+let partners = [];
 
-//     const urlRequetePartner = 'https://127.0.0.1:8000/api/partners';
-//     fetch(urlRequetePartner, init)
-//         .then((response) => {
-//             if (response.ok) {
-//                 // return response.json();
-//                 console.log(response.json());
-//             } else {
-//                 console.error("Erreur réponse: " + response.status);
-//             }
-//         })
-//         .then((response) => {
-//             let myHtml = '';
+searchInput.addEventListener("input", (el) => {
+    const value = el.target.value.toLowerCase();
+    partners.forEach(partner => {
+        const isVisible = partner.name.toLowerCase().includes(value)
+        partner.element.classList.toggle("hide", !isVisible)
+    })
+})
 
-//             response?.forEach(element => {
-//                 myHtml += getCard(element.name, element.address, element.email);
-//             });
-//         })
-//         .catch((error) => {
-//             alert(error);
-//         });
-// }
+fetch('https://127.0.0.1:8000/api/partners')
+    .then(res => res.json())
+    .then(data => { return data["hydra:member"]})
+    .then(dataPartner => {
+        partners = dataPartner.map(partner => {
+            const card = partnerCardTemplate.content.cloneNode(true).children[0];
+            const header = card.querySelector("[data-header]");
+            const body = card.querySelector("[data-body]");
+            header.textContent = partner.name;
+            body.textContent = partner.email;
+            partnerCardContainer.append(card);
+            return { name: partner.name, email: partner.email, element: card }
+        })
+    })    
 
-// function getCard(name, address, email) {
-//     let myHtml = `
-// <div>
-//     <div class="card h-100">
-//         <div class="card-body">
-//             <h5 class="card-title">${name}</h5>
-//             <p class="card-text">
-//             ${address}
-//             </p>
-//             <p class="card-text">
-//             ${email}
-//             </p>
-//         </div>
-//     </div>
-// </div>
-// `;
+// Dynamic search for structure
+const structureCardTemplate = document.querySelector("[data-structure-template]");
+const structureCardContainer = document.querySelector("[data-structure-cards-container]");
 
-//     return myHtml;
-// }
+let structures = [];
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     getPartners();
-// });
+searchInput.addEventListener("input", (el) => {
+    const value = el.target.value.toLowerCase();
+    structures.forEach(structure => {
+        const isVisible = structure.name.toLowerCase().includes(value)
+        structure.element.classList.toggle("hide", !isVisible)
+    })
+})
 
+fetch('https://127.0.0.1:8000/api/structures')
+    .then(res => res.json())
+    .then(data => { return data["hydra:member"]})
+    .then(dataStructure => {
+        structures = dataStructure.map(structure => {
+            const card = structureCardTemplate.content.cloneNode(true).children[0];
+            const header = card.querySelector("[data-header]");
+            const body = card.querySelector("[data-body]");
+            header.textContent = structure.name;
+            body.textContent = structure.email;
+            structureCardContainer.append(card);
+            return { name: structure.name, email: structure.email, element: card }
+        })
+    })    
 
 // Btn to show actives partners or structures
 function showActive() {

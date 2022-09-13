@@ -27,19 +27,37 @@
     </button>
 {% endif %}
 
-
     <section class="mainContainer">
         <div class="mainContainer__search mt-5">
             <p>Vous pouvez effectuer une recherche sur l'ensemble des partenaires et structures du groupe SportClub:</p>           
-            <form action="" class="d-flex justify-content-center mt-5">
+            {# <form action="" class="d-flex justify-content-center mt-5">
                 <input class="mainContainer__search--searchBar" name="search" id="search" type="text" placeholder="Saisissez votre recherche">
                 <button class="mainContainer__search--searchBtn" type="submit" id="go">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-            </form>
-        </div>
+            </form> #}
+            <div class="d-flex justify-content-center">
+                <input type="search" id="search" class="mb-3 mainContainer__search--searchBar" placeholder="Saisissez votre recherche" data-search>
+            </div>
+            
+        <div class="partner-cards" data-partner-cards-container></div>
+        <template data-partner-template>
+            <div class="card border-primary m-2 p-2 cardSearch">
+                <div class="header" data-header></div>    
+                <div class="body" data-body></div>    
+            </div>
+        </template>
 
-        <div class="mt-5">
+        <div class="structure-cards" data-structure-cards-container></div>
+        <template data-structure-template>
+            <div class="card border-primary m-2 p-2 cardSearch">
+                <div class="header" data-header></div>    
+                <div class="body" data-body></div>    
+            </div>
+        </template>
+
+
+        {# <div class="mt-5">
         {% if is_granted('ROLE_ADMIN') %}
             {% if search %}
                 {% for partnersSearch in partnersSearches %}
@@ -87,8 +105,22 @@
                 {% endfor %}
             {% endif %}
         {% endif %}
-        </div>
+        </div> #}
     </section>
-    
+
+    {# <section class="mainContainer">
+        <div class="d-flex justify-content-center">
+            <input type="search" id="search" class="mb-3 mainContainer__search--searchBar" placeholder="Saisissez votre recherche" data-search>
+        </div>
+        <div class="partner-cards" data-partner-cards-container></div>
+        
+        <template data-partner-template>
+            <div class="card m-2">
+                <div class="header" data-header>Nom du partenaire</div>    
+                <div class="body" data-body>blabla</div>    
+            </div>
+        </template>
+    </section> #}
+
 </div>
 {% endblock %}

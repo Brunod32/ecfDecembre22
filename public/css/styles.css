@@ -201,12 +201,15 @@ nav.main-menu.expanded,
 
 /* Seach page */
 
-.btnBack:hover {
-    color: var(--dashboard-items-color);
+.cardSearch {
+    width: 25%;
+}
+
+.cardSearch:hover {
+    box-shadow: none;
 }
 
 /* -------------------- */
-
 
 @media screen and (max-width: 1030px) {
     body {
@@ -246,6 +249,11 @@ nav.main-menu.expanded,
 
     .partnerDetails,
     .structureDetails {
+        text-align: center;
+    }
+
+    .cardSearch {
+        width: 100%;
         text-align: center;
     }
     
