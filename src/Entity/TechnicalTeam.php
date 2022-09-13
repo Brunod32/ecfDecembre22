@@ -9,9 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: TechnicalTeamRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'Cette adresse mail est utilisée pour un autre compte utilisateur')]
+#[ApiResource()]
 class TechnicalTeam implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]

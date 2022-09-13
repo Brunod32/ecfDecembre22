@@ -6,9 +6,10 @@ use App\Repository\StructureRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: StructureRepository::class)]
+#[ApiResource()]
 class Structure implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]

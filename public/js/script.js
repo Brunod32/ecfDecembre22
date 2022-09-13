@@ -2,61 +2,110 @@
 let btnCopy = document.getElementById("btnCopy");
 let passwordToCopy = document.getElementById('passwordToCopy');
 let btnNewPass = document.getElementById('btnNewPass');
-// btnCopy.addEventListener("click", () => {
-//     passwordToCopy.select();
-//     navigator.clipboard.writeText(passwordToCopy.value);
-//     btnCopy.innerText = 'Copié';
-// });
+
 function btnGeneratePass() {
     passwordToCopy.select();
     navigator.clipboard.writeText(passwordToCopy.value);
     btnCopy.innerText = 'Copié';
 };
+// ? permet s'éviter l'erreur "Cannot read Property 'addEventListener' of null"
+// btnNewPass?.addEventListener("click", () => {
+//     location.reload();
+// });
+window.onload = () => {
+    btnNewPass.addEventListener("click", () => {
+        location.reload();
+    });
+}
 
-btnNewPass.addEventListener("click", () => {
-    location.reload();
-});
+// function getPartners() {
+//     const headers = new Headers();
+//     headers.append('Content-Type', 'application/ld+json');
 
-// // Appel Ajax
-// function statusPartner() {
-//     let active = document.getElementsByClassName('check');
-//     let unactive = document.getElementsByClassName('uncheck');
-//     let cardToHide = document.getElementById('cardToHide');
-//     let arrayCard = [cardToHide];
+//     const init = {
+//         method: 'GET',
+//         headers: headers
+//     }
 
-//     const xhr = new XMLHttpRequest();
-//     const url = 'https://127.0.0.1:8000/admin/partner/';
-//     xhr.open('GET', url);
-
-//     xhr.addEventListener('readystatechange', function () {
-//         if (xhr.readyState === 4) {
-//             if (xhr.status === 200) {
-//                 //On gère le retour de notre appel Ajax
-//                 console.log("Response = " + xhr.response);
-                
-                
-//                 // if (active) {
-//                 //     cardToHide.classList.add('hide')
-//                 // }
-
-//                 arrayCard.forEach(() => {
-//                     cardToHide.classList.add('hide');
-//                 });
-//                 // for (let i = 0; i < arrayCard.length; i++) {
-//                 //     if (active) {
-//                 //         console.log(arrayCard.length);
-//                 //         cardToHide.classList.add('hide');
-//                 //     }
-//                 // }
-               
-//             } else if (xhr.status === 404) {
-//                 alert("Impossible de se connecter à l'url de la requête ajax")
+//     const urlRequetePartner = 'https://127.0.0.1:8000/api/partners';
+//     fetch(urlRequetePartner, init)
+//         .then((response) => {
+//             if (response.ok) {
+//                 // return response.json();
+//                 console.log(response.json());
 //             } else {
-//                 alert("Une erreur est survenue");
+//                 console.error("Erreur réponse: " + response.status);
 //             }
-//         };
-//     });
+//         })
+//         .then((response) => {
+//             let myHtml = '';
 
-
-//     xhr.send();
+//             response?.forEach(element => {
+//                 myHtml += getCard(element.name, element.address, element.email);
+//             });
+//         })
+//         .catch((error) => {
+//             alert(error);
+//         });
 // }
+
+// function getCard(name, address, email) {
+//     let myHtml = `
+// <div>
+//     <div class="card h-100">
+//         <div class="card-body">
+//             <h5 class="card-title">${name}</h5>
+//             <p class="card-text">
+//             ${address}
+//             </p>
+//             <p class="card-text">
+//             ${email}
+//             </p>
+//         </div>
+//     </div>
+// </div>
+// `;
+
+//     return myHtml;
+// }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     getPartners();
+// });
+
+
+// Btn to show actives partners
+function showActive() {
+    let cardToHide = document.getElementsByClassName("cardToHide");
+
+    for (i = 0; i < cardToHide.length; i++) {
+        if (cardToHide[i].classList.contains("active")){
+            cardToHide[i].style.display= "block";
+        }
+        else {
+            cardToHide[i].style.display= "none";
+        }
+    }
+}
+
+// Btn to show unactives partners
+function showUnactive() {
+    let cardToHide = document.getElementsByClassName("cardToHide");
+
+    for (i = 0; i < cardToHide.length; i++) {
+        if (cardToHide[i].classList.contains("active")){
+            cardToHide[i].style.display= "none";
+        }
+        else {
+            cardToHide[i].style.display= "block";
+        }
+    }
+}
+
+function showAll() {
+    let cardToHide = document.getElementsByClassName("cardToHide");
+
+    for (i = 0; i < cardToHide.length; i++) {
+        cardToHide[i].style.display= "block";
+    }
+}
