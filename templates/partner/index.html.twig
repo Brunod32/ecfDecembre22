@@ -60,15 +60,15 @@
                                     <hr>
                                 </div>
                                 <div class="row card__infos">
-                                        <h5 class="text-center mb-5">Identité du partenaire</h5>
+                                    <h5 class="text-center mb-5">Identité du partenaire</h5>
                                     <div class="row row-cols-1 row-cols-lg-2">
                                         <p><b>Email:</b> {{ partner.email }}</p>
                                         <p><b>Adresse:</b> {{ partner.address | capitalize }}</p>
                                         <p><b>Description:</b> {{ partner.description | capitalize }}</p>
                                         <p><b>Actif:</b> {{ partner.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                                     </div>
-                                    <hr class="partnerHr">
-                                        <h5 class="text-center mt-3 mb-5">Permissions</h5>
+                                    <hr class="cardHr">
+                                    <h5 class="text-center mt-3 mb-5">Permissions</h5>
                                     <div class="row row-cols-1 row-cols-lg-2">
                                         <p><b>Vente de nourriture:</b> {{ partner.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                                         <p><b>Vente de boisson:</b> {{ partner.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>

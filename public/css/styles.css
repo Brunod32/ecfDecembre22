@@ -181,7 +181,7 @@ nav.main-menu.expanded,
     border-color: var(--dashboard-search-hover);
 }
 
-.partnerHr {
+.cardHr {
     width: 50%;
     margin: auto;
 }

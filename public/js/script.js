@@ -74,7 +74,7 @@ window.onload = () => {
 // });
 
 
-// Btn to show actives partners
+// Btn to show actives partners or structures
 function showActive() {
     let cardToHide = document.getElementsByClassName("cardToHide");
 
@@ -88,7 +88,7 @@ function showActive() {
     }
 }
 
-// Btn to show unactives partners
+// Btn to show unactives partners or structures
 function showUnactive() {
     let cardToHide = document.getElementsByClassName("cardToHide");
 
@@ -102,6 +102,7 @@ function showUnactive() {
     }
 }
 
+// Btn to show all partners or structures
 function showAll() {
     let cardToHide = document.getElementsByClassName("cardToHide");
 
