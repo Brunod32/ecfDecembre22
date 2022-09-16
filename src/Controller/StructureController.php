@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 #[Route('/admin/structure')]
 class StructureController extends AbstractController
@@ -74,13 +76,28 @@ class StructureController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_structure_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Structure $structure, StructureRepository $structureRepository): Response
+    public function edit(Request $request, Structure $structure, StructureRepository $structureRepository, MailerInterface $mailer): Response
     {
         $form = $this->createForm(StructureUpdateType::class, $structure);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $structureRepository->add($structure, true);
+
+            // Sending mail
+            $structureMail = $structure->getEmail();
+            $email = (new TemplatedEmail())
+            ->from('brunod.dev@gmail.com')
+            ->to($structureMail)
+            ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
+            ->htmlTemplate('mail/updateStructureAccountMail.html.Twig')
+            ->context([
+                'newsletter_date' => new \DateTime(),
+                'structure' => $structure,
+            ])
+        ;
+        $mailer->send($email);
+
 
             return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
         }

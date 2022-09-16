@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 #[Route('/admin/partner')]
 class PartnerController extends AbstractController
@@ -73,13 +75,28 @@ class PartnerController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_partner_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Partner $partner, PartnerRepository $partnerRepository): Response
+    public function edit(Request $request, Partner $partner, PartnerRepository $partnerRepository, MailerInterface $mailer): Response
     {
         $form = $this->createForm(PartnerUpdateType::class, $partner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $partnerRepository->add($partner, true);
+
+            // Sending mail
+            $partnerMail = $partner->getEmail();
+            $email = (new TemplatedEmail())
+            ->from('brunod.dev@gmail.com')
+            ->to($partnerMail)
+            ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
+            ->htmlTemplate('mail/updatePartnerAccountMail.html.Twig')
+            ->context([
+                'newsletter_date' => new \DateTime(),
+                'partner' => $partner,
+            ])
+        ;
+        $mailer->send($email);
+
 
             return $this->redirectToRoute('app_partner_index', [], Response::HTTP_SEE_OTHER);
         }
