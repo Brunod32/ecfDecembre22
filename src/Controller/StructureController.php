@@ -44,13 +44,22 @@ class StructureController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $structureRepository->add($structure, true);
 
-        // encode the password
-        $structure->setPassword(
+            // encode the password
+            $structure->setPassword(
             $userPasswordHasher->hashPassword(
                     $structure,
                     $form->get('password')->getData()
                 )
             );
+
+            // If status inactive, Permissions are not allowed
+            if ($structure->isActive() == false) {
+                $structure->setSellFood(false);
+                $structure->setSellDrink(false);
+                $structure->setSendNewsletter(false);
+                $structure->setScheduleManagement(false);
+                $structure->setPrivateLesson(false);
+            }
 
             // Set the role
             $structure->setRoles(['ROLE_STRUCTURE']);
@@ -59,7 +68,7 @@ class StructureController extends AbstractController
 
             // Sending mail
             $structureMail = $structure->getEmail();
-            $structurePartner = $structure->getPartnerId->getEmail();
+            $structurePartner = $structure->getPartnerId()->getEmail();
             $email = (new TemplatedEmail())
                 ->from('brunod.dev@gmail.com')
                 ->to($structureMail)
@@ -91,13 +100,24 @@ class StructureController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_structure_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Structure $structure, StructureRepository $structureRepository, MailerInterface $mailer): Response
+    public function edit(Request $request, Structure $structure, StructureRepository $structureRepository, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $form = $this->createForm(StructureUpdateType::class, $structure);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $structureRepository->add($structure, true);
+
+            // If status inactive, Permissions are not allowed
+            if ($structure->isActive() == false) {
+                $structure->setSellFood(false);
+                $structure->setSellDrink(false);
+                $structure->setSendNewsletter(false);
+                $structure->setScheduleManagement(false);
+                $structure->setPrivateLesson(false);
+            }
+
+            $entityManager->flush();
 
             // Sending mail
             $structureMail = $structure->getEmail();
