@@ -67,18 +67,18 @@ class PartnerController extends AbstractController
             $entityManager->flush();
 
             // Sending mail
-            // $partnerMail = $partner->getEmail();
-            // $email = (new TemplatedEmail())
-            //     ->from('brunod.dev@gmail.com')
-            //     ->to($partnerMail)
-            //     ->subject('Création de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
-            //     ->htmlTemplate('mail/creationPartnerAccountMail.html.Twig')
-            //     ->context([
-            //         'newsletter_date' => new \DateTime(),
-            //         'partner' => $partner,
-            //     ])
-            // ;
-            // $mailer->send($email);
+            $partnerMail = $partner->getEmail();
+            $email = (new TemplatedEmail())
+                ->from('brunod.dev@gmail.com')
+                ->to($partnerMail)
+                ->subject('Création de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
+                ->htmlTemplate('mail/creationPartnerAccountMail.html.Twig')
+                ->context([
+                    'newsletter_date' => new \DateTime(),
+                    'partner' => $partner,
+                ])
+            ;
+            $mailer->send($email);
 
             return $this->redirectToRoute('app_partner_index', [], Response::HTTP_SEE_OTHER);
         }

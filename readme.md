@@ -1,5 +1,7 @@
 ## Utilisation en local
 
+### Installation du projet
+
 Pour installer le projet sur votre machine, vous devez le cloner depuis le dépôt Github en utilisant la commande
 <br/>
   `https://github.com/Brunod32/ecfDecembre22.git`
@@ -23,4 +25,7 @@ Pour installer le projet sur votre machine, vous devez le cloner depuis le dép�
 <br/>
   Lancez le serveur Symfony 
 <br/>
-  `symfony serve`  
+  `symfony serve` 
+
+### Création d'un profil administrateur
+Rendez-vous à l'adresse https://127.0.0.1:8000/register et remplissez le formulaire.
