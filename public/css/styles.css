@@ -211,6 +211,18 @@ nav.main-menu.expanded,
 
 /* -------------------- */
 
+/* Error pages */
+.errorIcon {
+    font-size: 6rem;
+}
+
+.errorText {
+    font-size: 2rem;
+}
+
+
+/* -------------------- */
+
 @media screen and (max-width: 1030px) {
     body {
         font-size: 18px;
