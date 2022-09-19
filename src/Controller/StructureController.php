@@ -59,9 +59,11 @@ class StructureController extends AbstractController
 
             // Sending mail
             $structureMail = $structure->getEmail();
+            $structurePartner = $structure->getPartnerId->getEmail();
             $email = (new TemplatedEmail())
                 ->from('brunod.dev@gmail.com')
                 ->to($structureMail)
+                ->cc($structurePartner)
                 ->subject('ICréation de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
                 ->htmlTemplate('mail/creationStructureAccountMail.html.Twig')
                 ->context([
@@ -99,9 +101,11 @@ class StructureController extends AbstractController
 
             // Sending mail
             $structureMail = $structure->getEmail();
+            $structurePartner = $structure->getPartnerId()->getEmail();
             $email = (new TemplatedEmail())
                 ->from('brunod.dev@gmail.com')
                 ->to($structureMail)
+                ->cc($structurePartner)
                 ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
                 ->htmlTemplate('mail/updateStructureAccountMail.html.Twig')
                 ->context([
