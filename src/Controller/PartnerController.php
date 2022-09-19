@@ -35,7 +35,7 @@ class PartnerController extends AbstractController
     }
 
     #[Route('/new', name: 'app_partner_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PartnerRepository $partnerRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, PartnerRepository $partnerRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $partner = new Partner();
         $form = $this->createForm(PartnerType::class, $partner);
@@ -56,6 +56,20 @@ class PartnerController extends AbstractController
             $partner->setRoles(['ROLE_PARTNER']);
             $entityManager->persist($partner);
             $entityManager->flush();
+
+            // Sending mail
+            $partnerMail = $partner->getEmail();
+            $email = (new TemplatedEmail())
+                ->from('brunod.dev@gmail.com')
+                ->to($partnerMail)
+                ->subject('Création de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
+                ->htmlTemplate('mail/creationPartnerAccountMail.html.Twig')
+                ->context([
+                    'newsletter_date' => new \DateTime(),
+                    'partner' => $partner,
+                ])
+            ;
+            $mailer->send($email);
 
             return $this->redirectToRoute('app_partner_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -86,17 +100,16 @@ class PartnerController extends AbstractController
             // Sending mail
             $partnerMail = $partner->getEmail();
             $email = (new TemplatedEmail())
-            ->from('brunod.dev@gmail.com')
-            ->to($partnerMail)
-            ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
-            ->htmlTemplate('mail/updatePartnerAccountMail.html.Twig')
-            ->context([
-                'newsletter_date' => new \DateTime(),
-                'partner' => $partner,
-            ])
-        ;
-        $mailer->send($email);
-
+                ->from('brunod.dev@gmail.com')
+                ->to($partnerMail)
+                ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
+                ->htmlTemplate('mail/updatePartnerAccountMail.html.Twig')
+                ->context([
+                    'newsletter_date' => new \DateTime(),
+                    'partner' => $partner,
+                ])
+            ;
+            $mailer->send($email);
 
             return $this->redirectToRoute('app_partner_index', [], Response::HTTP_SEE_OTHER);
         }

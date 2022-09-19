@@ -11,3 +11,8 @@
 .mailContainer__footer {
     margin-top: 50px;
 }
+
+.mailContainer__content--information {
+    color:red;
+    font-size: larger;
+}

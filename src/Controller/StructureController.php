@@ -35,7 +35,7 @@ class StructureController extends AbstractController
     }
 
     #[Route('/new', name: 'app_structure_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, StructureRepository $structureRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, StructureRepository $structureRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $structure = new Structure();
         $form = $this->createForm(StructureType::class, $structure);
@@ -57,6 +57,19 @@ class StructureController extends AbstractController
             $entityManager->persist($structure);
             $entityManager->flush();
 
+            // Sending mail
+            $structureMail = $structure->getEmail();
+            $email = (new TemplatedEmail())
+                ->from('brunod.dev@gmail.com')
+                ->to($structureMail)
+                ->subject('ICréation de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
+                ->htmlTemplate('mail/creationStructureAccountMail.html.Twig')
+                ->context([
+                    'newsletter_date' => new \DateTime(),
+                    'structure' => $structure,
+                ])
+            ;
+            $mailer->send($email);
 
             return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -87,16 +100,16 @@ class StructureController extends AbstractController
             // Sending mail
             $structureMail = $structure->getEmail();
             $email = (new TemplatedEmail())
-            ->from('brunod.dev@gmail.com')
-            ->to($structureMail)
-            ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
-            ->htmlTemplate('mail/updateStructureAccountMail.html.Twig')
-            ->context([
-                'newsletter_date' => new \DateTime(),
-                'structure' => $structure,
-            ])
-        ;
-        $mailer->send($email);
+                ->from('brunod.dev@gmail.com')
+                ->to($structureMail)
+                ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
+                ->htmlTemplate('mail/updateStructureAccountMail.html.Twig')
+                ->context([
+                    'newsletter_date' => new \DateTime(),
+                    'structure' => $structure,
+                ])
+            ;
+            $mailer->send($email);
 
 
             return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
