@@ -57,7 +57,7 @@ nav.main-menu.expanded,
 .main-menu__list--item {
     list-style-type: none;
     vertical-align: middle;
-    padding-top: 100px;
+    padding-top: 75px;
 }
 
 .main-menu__list--link {
@@ -65,10 +65,10 @@ nav.main-menu.expanded,
     color: var(--dashboard-items-color);
 }
 
-.main-menu__list--logout {
+/* .main-menu__list--logout {
     position: absolute;
     bottom: 10px;
-}
+} */
 
 .main-menu__list--i {
     vertical-align: middle;
@@ -217,8 +217,18 @@ nav.main-menu.expanded,
 }
 
 .errorText {
-    font-size: 2rem;
+    font-size: 3rem;
 }
+
+/* -------------------- */
+
+/* contactForm page */
+
+.container__form--fa {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
 
 
 /* -------------------- */
@@ -269,4 +279,11 @@ nav.main-menu.expanded,
         text-align: center;
     }
     
+    .container__form--btnForm {
+        margin-bottom: 30px;
+    }
+
+    .container__form--explicationForm {
+        text-align: center;
+    }
 }

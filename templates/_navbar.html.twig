@@ -24,16 +24,28 @@
                 <span class="main-menu__list--title">Rechercher</span>
             </a>
         </li>
+        <li class="main-menu__list--item">
+            <a href="{{ path('app_contact_form_index') }}" class="main-menu__list--link">
+                <i class="fa-solid fa-message fa-2x main-menu__list--i"></i>
+                <span class="main-menu__list--title">Messages</span>
+            </a>
+        </li>
+        <li class="main-menu__list--item">
+            <a href="{{ path('app_logout') }}" class="main-menu__list--link main-menu__list--logout">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-2x main-menu__list--i"></i>
+                <span class="main-menu__list--title">Déconnexion</span>
+            </a>
+        </li>
     </ul>
 
-    <ul class="main-menu__list">
+    {# <ul class="main-menu__list">
         <li class="main-menu__list--item">
             <a href="{{ path('app_logout') }}" class="main-menu__list--link main-menu__list--logout">
                 <i class="fa-solid fa-arrow-right-from-bracket fa-2x main-menu__list--i"></i>
                 <span class="main-menu__list--title">Déconnexion</span>
             </a>
         </li>  
-    </ul>
+    </ul> #}
 </nav>
 
 <nav class="menuMobile">
@@ -54,6 +66,10 @@
         </li>
         <li class="nav-item"><a href="{{ path('app_search') }}" class="main-menu__list--link">
                 <i class="fa-solid fa-magnifying-glass fa-2x main-menu__list--i"></i>
+            </a>
+        </li>
+        <li class="nav-item"><a href="{{ path('app_contact_form_index') }}" class="main-menu__list--link">
+                <i class="fa-solid fa-message fa-2x main-menu__list--i"></i>
             </a>
         </li>
         <li class="nav-item">

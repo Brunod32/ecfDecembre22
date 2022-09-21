@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StructureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -64,6 +66,14 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private ?Partner $partnerId = null;
 
+    #[ORM\OneToMany(mappedBy: 'structureId', targetEntity: ContactForm::class)]
+    private Collection $contactForms;
+
+    public function __construct()
+    {
+        $this->contactForms = new ArrayCollection();
+    }
+
     /**
      * Transform to string function to template parnterConsult to have structure ref
      * 
@@ -71,7 +81,8 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function __toString()
     {
-        return (string) $this->getId();
+        // return (string) $this->getId();
+        return (string) $this->getName();
     }
 
     public function getId(): ?int
@@ -284,6 +295,36 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPartnerId(?Partner $partnerId): self
     {
         $this->partnerId = $partnerId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContactForm>
+     */
+    public function getContactForms(): Collection
+    {
+        return $this->contactForms;
+    }
+
+    public function addContactForm(ContactForm $contactForm): self
+    {
+        if (!$this->contactForms->contains($contactForm)) {
+            $this->contactForms->add($contactForm);
+            $contactForm->setStructureId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContactForm(ContactForm $contactForm): self
+    {
+        if ($this->contactForms->removeElement($contactForm)) {
+            // set the owning side to null (unless already changed)
+            if ($contactForm->getStructureId() === $this) {
+                $contactForm->setStructureId(null);
+            }
+        }
 
         return $this;
     }

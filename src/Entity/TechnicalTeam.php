@@ -45,10 +45,14 @@ class TechnicalTeam implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'technicalTeamId', targetEntity: Structure::class)]
     private Collection $structures;
 
+    #[ORM\OneToMany(mappedBy: 'technicalTeamId', targetEntity: ContactForm::class)]
+    private Collection $contactForms;
+
     public function __construct()
     {
         $this->partners = new ArrayCollection();
         $this->structures = new ArrayCollection();
+        $this->contactForms = new ArrayCollection();
     }
 
     /**
@@ -210,6 +214,36 @@ class TechnicalTeam implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($structure->getTechnicalTeamId() === $this) {
                 $structure->setTechnicalTeamId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContactForm>
+     */
+    public function getContactForms(): Collection
+    {
+        return $this->contactForms;
+    }
+
+    public function addContactForm(ContactForm $contactForm): self
+    {
+        if (!$this->contactForms->contains($contactForm)) {
+            $this->contactForms->add($contactForm);
+            $contactForm->setTechnicalTeamId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContactForm(ContactForm $contactForm): self
+    {
+        if ($this->contactForms->removeElement($contactForm)) {
+            // set the owning side to null (unless already changed)
+            if ($contactForm->getTechnicalTeamId() === $this) {
+                $contactForm->setTechnicalTeamId(null);
             }
         }
 

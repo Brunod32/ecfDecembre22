@@ -4,6 +4,13 @@
 
 {% block body %}
 
+{# Alert message after contactForm message #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center mt-5">
+            {{ message }}
+        </div>
+    {% endfor %}
+
 {% for structure in structures %}
     {% if structure.id is same as app.user.id %}
         <div class="containe user">
@@ -15,6 +22,12 @@
                     <button class="btn btn-outline-primary mx-3">     
                         <a href="{{ path('app_search') }}">
                             <i class="fa-solid fa-magnifying-glass fa-2x user__btn--icon" title="Rechercher"></i>
+                        </a>
+                    </button>
+                    <button class="btn btn-outline-primary mx-3">     
+                        {# <a href="{{ path('app_contact_form_index') }}"> #}
+                        <a href="{{ path('app_contact_form_new', {'idStructure': app.user.id }) }}">
+                            <i class="fa-solid fa-message fa-2x user__btn--icon" title="Ecrire un nouveau message"></i>
                         </a>
                     </button>
                     <button class="btn btn-outline-primary user__btn--btnDisconnect">     

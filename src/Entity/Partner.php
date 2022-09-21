@@ -62,6 +62,9 @@ class Partner implements PasswordAuthenticatedUserInterface, UserInterface
     #[ORM\OneToMany(mappedBy: 'partnerId', targetEntity: Structure::class)]
     private Collection $structures;
 
+    #[ORM\OneToMany(mappedBy: 'partnerId', targetEntity: ContactForm::class)]
+    private Collection $contactForms;
+
     /**
      * Transform to string function to template new structure to have partner name
      * 
@@ -75,6 +78,7 @@ class Partner implements PasswordAuthenticatedUserInterface, UserInterface
     public function __construct()
     {
         $this->structures = new ArrayCollection();
+        $this->contactForms = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -307,5 +311,35 @@ class Partner implements PasswordAuthenticatedUserInterface, UserInterface
                 return true;
             }
         }
+    }
+
+    /**
+     * @return Collection<int, ContactForm>
+     */
+    public function getContactForms(): Collection
+    {
+        return $this->contactForms;
+    }
+
+    public function addContactForm(ContactForm $contactForm): self
+    {
+        if (!$this->contactForms->contains($contactForm)) {
+            $this->contactForms->add($contactForm);
+            $contactForm->setPartnerId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContactForm(ContactForm $contactForm): self
+    {
+        if ($this->contactForms->removeElement($contactForm)) {
+            // set the owning side to null (unless already changed)
+            if ($contactForm->getPartnerId() === $this) {
+                $contactForm->setPartnerId(null);
+            }
+        }
+
+        return $this;
     }
 }
