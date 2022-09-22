@@ -16,7 +16,6 @@ body {
     --check-color-bis: rgb(76, 235, 76);
     --uncheck-color: rgb(255, 0, 0);
     --dashboard-search-hover: rgb(0, 0, 255);
-    --search-item-color: rgb(135, 206, 250);
 
     background-color: var(--general-background-color);
 }
@@ -88,7 +87,13 @@ nav.main-menu.expanded,
 
 /* -------------------- */
 
-/* Card Homepage */
+/* Homepage */
+
+.home__title,
+.home__title--subtitle {
+    color: var(--color-text);
+}
+
 .card {
     border-radius: 20px;
 }
@@ -116,7 +121,7 @@ nav.main-menu.expanded,
 }
 
 .user__btn--btnDisconnect:hover {
-    background-color: red;
+    background-color: var(--uncheck-color);
 }
 
 .check {
