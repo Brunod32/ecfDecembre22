@@ -142,7 +142,6 @@ nav.main-menu.expanded,
 /* -------------------- */
 
 /* Password validation page */
-
 .container__validatePass {
     display: flex;
     justify-content: center;
@@ -154,20 +153,17 @@ nav.main-menu.expanded,
 
 /* -------------------- */
 
-.mainContainer__dashboard--links {
-    text-decoration: none;
+/* Password generator page */
+#passwordToCopy {
+    border-color: var(--dashboard-search-hover);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
 }
 
-.mainContainer__search--searchBtn {
-    border-radius: 100%;
-    width: 45px;
-    height: auto;
-    margin-left: 10px;
-    background-color: var(--search-item-color);
-    color:white;
-    border-color: white;
-}
+/* -------------------- */
 
+/* Seach page */
 .mainContainer__search--searchBar {
     width: 50vw;
     height: 45px;
@@ -180,26 +176,6 @@ nav.main-menu.expanded,
 .mainContainer__search--searchBtn:hover {
     border-color: var(--dashboard-search-hover);
 }
-
-.cardHr {
-    width: 50%;
-    margin: auto;
-}
-
-/* -------------------- */
-
-/* Password generator page */
-
-#passwordToCopy {
-    border-color: var(--dashboard-search-hover);
-    border-radius: 5px;
-    padding: 5px;
-    margin: 10px;
-}
-
-/* -------------------- */
-
-/* Seach page */
 
 .cardSearch {
     width: 25%;
@@ -223,16 +199,14 @@ nav.main-menu.expanded,
 /* -------------------- */
 
 /* contactForm page */
-
 .container__form--fa {
     font-size: 1.5rem;
     margin-top: 10px;
 }
 
-
-
 /* -------------------- */
 
+/* Responsive */
 @media screen and (max-width: 1030px) {
     body {
         font-size: 18px;
@@ -285,5 +259,9 @@ nav.main-menu.expanded,
 
     .container__form--explicationForm {
         text-align: center;
+    }
+
+    .mainContainer__search--searchBar {
+        width: 75vw;
     }
 }

@@ -302,17 +302,6 @@ class Partner implements PasswordAuthenticatedUserInterface, UserInterface
         return $this;
     }
 
-    // Function to show actives partners
-    public function showIfActive() {
-        $dataPartner = $this->partner;
-
-        foreach ($dataPartner as $partner) {
-            if ($partner->isActive()) {
-                return true;
-            }
-        }
-    }
-
     /**
      * @return Collection<int, ContactForm>
      */

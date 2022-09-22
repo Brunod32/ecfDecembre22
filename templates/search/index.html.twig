@@ -30,12 +30,7 @@
     <section class="mainContainer">
         <div class="mainContainer__search mt-5">
             <p>Vous pouvez effectuer une recherche sur l'ensemble des partenaires et structures du groupe SportClub:</p>           
-            {# <form action="" class="d-flex justify-content-center mt-5">
-                <input class="mainContainer__search--searchBar" name="search" id="search" type="text" placeholder="Saisissez votre recherche">
-                <button class="mainContainer__search--searchBtn" type="submit" id="go">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form> #}
+
             <div class="d-flex justify-content-center">
                 <input type="search" id="search" class="mb-3 mainContainer__search--searchBar" placeholder="Saisissez votre recherche" data-search>
             </div>
@@ -56,71 +51,7 @@
             </div>
         </template>
 
-
-        {# <div class="mt-5">
-        {% if is_granted('ROLE_ADMIN') %}
-            {% if search %}
-                {% for partnersSearch in partnersSearches %}
-                    <h4>Nom partenaire: {{ partnersSearch.name }}</h4>
-                        <p>
-                            <b>Description:</b> {{ partnersSearch.description }}
-                            <a href="{{ path('app_partner_show', {'id': partnersSearch.id}) }}" class="ms-5">Détails du partenaire</a>
-                        </p>
-                    {% else %}
-                        <div class="d-flex justify-content-center">
-                            <p>Aucun résultat ne correspond à votre recherche.</p>
-                        </div>
-                {% endfor %}
-            {% endif %}
-        {% endif %}
-
-        {% if is_granted('ROLE_PARTNER') %}
-            {% if search %}
-                {% for partnersSearch in partnersSearches %}
-                    <h4>Nom partenaire: {{ partnersSearch.name }}</h4>
-                        <p>
-                            <b>Description:</b> {{ partnersSearch.description }}
-                            <a href="{{ path('app_partner_consult_show', {'id': partnersSearch.id}) }}" class="ms-5">Détails du partenaire</a>
-                        </p>
-                    {% else %}
-                        <div class="d-flex justify-content-center">
-                            <p>Aucun résultat ne correspond à votre recherche.</p>
-                        </div>
-                {% endfor %}
-            {% endif %}
-        {% endif %}
-
-        {% if is_granted('ROLE_STRUCTURE') %}
-            {% if search %}
-                {% for partnersSearch in partnersSearches %}
-                    <h4>Nom partenaire: {{ partnersSearch.name }}</h4>
-                        <p>
-                            <b>Description:</b> {{ partnersSearch.description }}
-                            <a href="{{ path('app_structure_consult_show', {'id': partnersSearch.id}) }}" class="ms-5">Détails du partenaire</a>
-                        </p>
-                    {% else %}
-                        <div class="d-flex justify-content-center">
-                            <p>Aucun résultat ne correspond à votre recherche.</p>
-                        </div>
-                {% endfor %}
-            {% endif %}
-        {% endif %}
-        </div> #}
     </section>
-
-    {# <section class="mainContainer">
-        <div class="d-flex justify-content-center">
-            <input type="search" id="search" class="mb-3 mainContainer__search--searchBar" placeholder="Saisissez votre recherche" data-search>
-        </div>
-        <div class="partner-cards" data-partner-cards-container></div>
-        
-        <template data-partner-template>
-            <div class="card m-2">
-                <div class="header" data-header>Nom du partenaire</div>    
-                <div class="body" data-body>blabla</div>    
-            </div>
-        </template>
-    </section> #}
 
 </div>
 {% endblock %}
