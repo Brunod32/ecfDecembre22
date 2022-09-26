@@ -59,6 +59,11 @@ class StructureController extends AbstractController
                 $structure->setSendNewsletter(false);
                 $structure->setScheduleManagement(false);
                 $structure->setPrivateLesson(false);
+
+                $this->addFlash(
+                    'notice',
+                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                );
             }
 
             // Set the role
@@ -115,6 +120,11 @@ class StructureController extends AbstractController
                 $structure->setSendNewsletter(false);
                 $structure->setScheduleManagement(false);
                 $structure->setPrivateLesson(false);
+
+                $this->addFlash(
+                    'notice',
+                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                );
             }
 
             $entityManager->flush();

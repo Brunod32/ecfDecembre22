@@ -59,6 +59,11 @@ class PartnerController extends AbstractController
                 $partner->setSendNewsletter(false);
                 $partner->setScheduleManagement(false);
                 $partner->setPrivateLesson(false);
+
+                $this->addFlash(
+                    'notice',
+                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                );
             }
 
             // set the role
@@ -113,6 +118,11 @@ class PartnerController extends AbstractController
                 $partner->setSendNewsletter(false);
                 $partner->setScheduleManagement(false);
                 $partner->setPrivateLesson(false);
+
+                $this->addFlash(
+                    'notice',
+                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                );
             }
 
             $entityManager->flush();
