@@ -9,10 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/mail')]
+#[Route('/admin/mail')]
 class MailController extends AbstractController
 {
-    #[Route('/creation/{idPartner}', name: 'app_mail_partner_creation')]
+    #[Route('/creationPartner/{idPartner}', name: 'app_mail_partner_creation')]
     public function creationPartnerMail(int $idPartner, ManagerRegistry $doctrine): Response
     {
         // Get the partner
@@ -24,7 +24,7 @@ class MailController extends AbstractController
         ]);
     }
 
-    #[Route('/permissions/{idPartner}', name: 'app_mail_partner_perms')]
+    #[Route('/permissionsPartner/{idPartner}', name: 'app_mail_partner_perms')]
     public function ChangingPermsPartner(int $idPartner, ManagerRegistry $doctrine): Response
     {
         // Get the partner
@@ -36,7 +36,7 @@ class MailController extends AbstractController
         ]);
     }
 
-    #[Route('/creation/{idStructure}', name: 'app_mail_structure_creation')]
+    #[Route('/creationStructure/{idStructure}', name: 'app_mail_structure_creation')]
     public function creationStructureMail(int $idStructure, ManagerRegistry $doctrine): Response
     {
         // Get the structure
@@ -48,7 +48,7 @@ class MailController extends AbstractController
         ]);
     }
 
-    #[Route('/permissions/{idStructure}', name: 'app_mail_structure_perms')]
+    #[Route('/permissionsStructure/{idStructure}', name: 'app_mail_structure_perms')]
     public function ChangingPermsStructure(int $idStructure, ManagerRegistry $doctrine): Response
     {
         // Get the Structure
