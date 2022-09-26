@@ -12,7 +12,6 @@
     </div>
 {% endfor %}
 
-
 <div class="mainContainer">
     <div class="container">
         <div class="row">
@@ -24,7 +23,6 @@
             <a href="{{ path('app_partner_new') }}" class="btn btn-outline-primary">Créer un nouveau partenaire</a>
         </div>
     </div>
-
 
     <div class="container">
         <div class="m-5">
@@ -63,8 +61,18 @@
                                 <div class="text-center">
                                     <h4 class="card-title pt-2">{{ partner.id }} - {{ partner.name }}</h4>
                                     <div class="d-flex justify-content-around">
-                                        <a href="{{ path('app_partner_show', {'id': partner.id}) }}" title="Voir"><i class="fa-solid fa-folder-open"></i></a>
-                                        <a href="{{ path('app_partner_edit', {'id': partner.id}) }}" title="Modifier"><i class="fa-solid fa-pen"></i></a>
+                                        <a href="{{ path('app_partner_show', {'id': partner.id}) }}" title="Voir">
+                                            <i class="fa-solid fa-folder-open fa-2x"></i>
+                                        </a>
+                                        <a href="{{ path('app_partner_edit', {'id': partner.id}) }}" title="Modifier">
+                                            <i class="fa-solid fa-pen fa-2x"></i>
+                                        </a>
+                                        <a href="{{ path('app_mail_partner_creation', { 'idPartner': partner.id }) }}" title="Mail type de création de compte">
+                                            <i class="fa-solid fa-envelope fa-2x"></i>
+                                        </a>
+                                        <a href="{{ path('app_mail_partner_perms', { 'idPartner': partner.id }) }}" title="Mail type de MAJ de permissions">
+                                            <i class="fa-sharp fa-solid fa-envelopes-bulk fa-2x"></i>
+                                        </a>
                                     </div>
                                     <hr>
                                 </div>
@@ -76,8 +84,8 @@
                                         <p><b>Description:</b> {{ partner.description | capitalize }}</p>
                                         <p><b>Actif:</b> {{ partner.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                                     </div>
-                                    <hr class="cardHr">
-                                    <h5 class="text-center mt-3 mb-5">Permissions</h5>
+                                    <hr class="pt-2">
+                                    <h5 class="text-center mb-3">Permissions</h5>
                                     <div class="row row-cols-1 row-cols-lg-2">
                                         <p><b>Vente de nourriture:</b> {{ partner.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                                         <p><b>Vente de boisson:</b> {{ partner.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
@@ -85,7 +93,7 @@
                                         <p><b>Gestion planning:</b> {{ partner.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                                         <p><b>Cours particulier:</b> {{ partner.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                     {% else %}
                         <p class="text-center">Aucun enregistrement trouvé</p>
