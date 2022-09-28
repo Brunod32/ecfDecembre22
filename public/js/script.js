@@ -44,7 +44,7 @@ fetch('https://127.0.0.1:8000/api/partners')
             let link = document.createTextNode('Consulter');
             baliseA.append(link);
             baliseA.classList.add("linkCardSearch");
-            baliseA.href = "https://127.0.0.1:8000/admin/partner/" + partner.id + "/edit";
+            baliseA.href = "https://127.0.0.1:8000/admin/partner/" + partner.id;
             footer.appendChild(baliseA);
             partnerCardContainer.append(card);
 
@@ -82,7 +82,7 @@ fetch('https://127.0.0.1:8000/api/structures')
             let link = document.createTextNode('Consulter');
             baliseA.append(link);
             baliseA.classList.add("linkCardSearch");
-            baliseA.href = "https://127.0.0.1:8000/admin/structure/" + structure.id + "/edit";
+            baliseA.href = "https://127.0.0.1:8000/admin/structure/" + structure.id;
             footer.appendChild(baliseA);
             structureCardContainer.append(card);
             return { name: structure.name, email: structure.email, element: card }
