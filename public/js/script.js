@@ -3,20 +3,15 @@ let btnCopy = document.getElementById("btnCopy");
 let passwordToCopy = document.getElementById('passwordToCopy');
 let btnNewPass = document.getElementById('btnNewPass');
 
-function btnGeneratePass() {
+const btnGeneratePass = () => {
     passwordToCopy.select();
     navigator.clipboard.writeText(passwordToCopy.value);
     btnCopy.innerText = 'Copié';
 };
 // ? permet s'éviter l'erreur "Cannot read Property 'addEventListener' of null"
-// btnNewPass?.addEventListener("click", () => {
-//     location.reload();
-// });
-window.onload = () => {
-    btnNewPass.addEventListener("click", () => {
-        location.reload();
-    });
-}
+btnNewPass?.addEventListener("click", () => {
+    location.reload();
+});
 
 // Dynamic search for partner
 const partnerCardTemplate = document.querySelector("[data-partner-template]");
@@ -25,7 +20,7 @@ const searchInput = document.querySelector("[data-search]");
 
 let partners = [];
 
-searchInput.addEventListener("input", (el) => {
+searchInput?.addEventListener("input", (el) => {
     const value = el.target.value.toLowerCase();
     partners.forEach(partner => {
         const isVisible = partner.name.toLowerCase().includes(value)
@@ -41,9 +36,18 @@ fetch('https://127.0.0.1:8000/api/partners')
             const card = partnerCardTemplate.content.cloneNode(true).children[0];
             const header = card.querySelector("[data-header]");
             const body = card.querySelector("[data-body]");
+            const footer = card.querySelector("[data-footer]");
             header.textContent = partner.name;
             body.textContent = partner.email;
+            // Add link to the partner page details
+            let baliseA = document.createElement('a');
+            let link = document.createTextNode('Consulter');
+            baliseA.append(link);
+            baliseA.classList.add("linkCardSearch");
+            baliseA.href = "https://127.0.0.1:8000/admin/partner/" + partner.id + "/edit";
+            footer.appendChild(baliseA);
             partnerCardContainer.append(card);
+
             return { name: partner.name, email: partner.email, element: card }
         })
     })    
@@ -54,7 +58,7 @@ const structureCardContainer = document.querySelector("[data-structure-cards-con
 
 let structures = [];
 
-searchInput.addEventListener("input", (el) => {
+searchInput?.addEventListener("input", (el) => {
     const value = el.target.value.toLowerCase();
     structures.forEach(structure => {
         const isVisible = structure.name.toLowerCase().includes(value)
@@ -70,8 +74,16 @@ fetch('https://127.0.0.1:8000/api/structures')
             const card = structureCardTemplate.content.cloneNode(true).children[0];
             const header = card.querySelector("[data-header]");
             const body = card.querySelector("[data-body]");
+            const footer = card.querySelector("[data-footer]");
             header.textContent = structure.name;
             body.textContent = structure.email;
+            // Add link to the structure page details
+            let baliseA = document.createElement('a');
+            let link = document.createTextNode('Consulter');
+            baliseA.append(link);
+            baliseA.classList.add("linkCardSearch");
+            baliseA.href = "https://127.0.0.1:8000/admin/structure/" + structure.id + "/edit";
+            footer.appendChild(baliseA);
             structureCardContainer.append(card);
             return { name: structure.name, email: structure.email, element: card }
         })

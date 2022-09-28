@@ -190,6 +190,10 @@ nav.main-menu.expanded,
     box-shadow: none;
 }
 
+.linkCardSearch {
+    text-decoration: none;
+}
+
 /* -------------------- */
 
 /* Error pages */
