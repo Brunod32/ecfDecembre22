@@ -40,12 +40,12 @@ fetch('https://127.0.0.1:8000/api/partners')
             header.textContent = partner.name;
             body.textContent = partner.email;
             // Add link to the partner page details
-            let baliseA = document.createElement('a');
+            let tagA = document.createElement('a');
             let link = document.createTextNode('Consulter');
-            baliseA.append(link);
-            baliseA.classList.add("linkCardSearch");
-            baliseA.href = "https://127.0.0.1:8000/admin/partner/" + partner.id;
-            footer.appendChild(baliseA);
+            tagA.append(link);
+            tagA.classList.add("linkCardSearch");
+            tagA.href = "https://127.0.0.1:8000/admin/partner/" + partner.id;
+            footer.appendChild(tagA);
             partnerCardContainer.append(card);
 
             return { name: partner.name, email: partner.email, element: card }
@@ -78,12 +78,12 @@ fetch('https://127.0.0.1:8000/api/structures')
             header.textContent = structure.name;
             body.textContent = structure.email;
             // Add link to the structure page details
-            let baliseA = document.createElement('a');
+            let tagA = document.createElement('a');
             let link = document.createTextNode('Consulter');
-            baliseA.append(link);
-            baliseA.classList.add("linkCardSearch");
-            baliseA.href = "https://127.0.0.1:8000/admin/structure/" + structure.id;
-            footer.appendChild(baliseA);
+            tagA.append(link);
+            tagA.classList.add("linkCardSearch");
+            tagA.href = "https://127.0.0.1:8000/admin/structure/" + structure.id;
+            footer.appendChild(tagA);
             structureCardContainer.append(card);
             return { name: structure.name, email: structure.email, element: card }
         })

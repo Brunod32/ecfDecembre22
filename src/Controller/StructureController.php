@@ -66,6 +66,16 @@ class StructureController extends AbstractController
                 );
             }
 
+            // If connecting partner status inactive, structure status can not be active
+            if ($structure->getPartnerId->isActive() == false) {
+                $structure->setActive(false);
+
+                $this->addFlash(
+                    'notice',
+                    'Si le statut du partenaire de rattcahement est incatif, le statut de la structure ne peut être actif.'
+                );
+            }
+
             // Set the role
             $structure->setRoles(['ROLE_STRUCTURE']);
             $entityManager->persist($structure);
@@ -123,7 +133,17 @@ class StructureController extends AbstractController
 
                 $this->addFlash(
                     'notice',
-                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                    'Si le statut est incatif, aucune permission ne peut être accordée.'
+                );
+            }
+
+            // If connecting partner status inactive, structure status can not be active
+            if ($structure->getPartnerId()->isActive() == false) {
+                $structure->setActive(false);
+
+                $this->addFlash(
+                    'notice',
+                    'Si le statut du partenaire de rattachement est incatif, le statut de la structure ne peut être actif.'
                 );
             }
 
