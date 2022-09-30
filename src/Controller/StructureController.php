@@ -30,7 +30,7 @@ class StructureController extends AbstractController
             // 'structures' => $structureRepository->findAll(),
             'structures' => $structureRepository->findStructurePagination($page),
             'currentPage' => $page,
-            'maxStructure' => $nbStructure > ($page * 2)
+            'maxStructure' => $nbStructure > ($page * 10)
         ]);
     }
 

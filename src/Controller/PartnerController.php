@@ -30,7 +30,7 @@ class PartnerController extends AbstractController
             // 'partners' => $partnerRepository->findAll(),
             'partners' => $partnerRepository->findPartnerPagination($page),
             'currentPage' => $page,
-            'maxPartner' => $nbPartner > ($page * 2)
+            'maxPartner' => $nbPartner > ($page * 10)
         ]);
     }
 

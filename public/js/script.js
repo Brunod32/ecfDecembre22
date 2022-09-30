@@ -8,7 +8,7 @@ const btnGeneratePass = () => {
     navigator.clipboard.writeText(passwordToCopy.value);
     btnCopy.innerText = 'Copié';
 };
-// ? permet s'éviter l'erreur "Cannot read Property 'addEventListener' of null"
+
 btnNewPass?.addEventListener("click", () => {
     location.reload();
 });

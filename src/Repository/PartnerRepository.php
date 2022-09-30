@@ -22,10 +22,9 @@ class PartnerRepository extends ServiceEntityRepository
     }
 
     // Pagination
-    // Limit à 2 pendant mise en place, changer à la fin des développements
-    public function findPartnerPagination(int $page = 1, int $limit = 2): array
+    public function findPartnerPagination(int $page = 1, int $limit = 10): array
     {
-        return $this->findBy([], [], $limit, ($page - 1 ) * 2);
+        return $this->findBy([], [], $limit, ($page - 1 ) * 10);
     }
 
     public function findPartnerPaginationCount(): int
@@ -33,19 +32,6 @@ class PartnerRepository extends ServiceEntityRepository
         $partner = $this->findAll();
         return $this->count([]);
     }
-    
-    // Search
-    // public function searchPartner(?string $search): array
-    // {
-    //     $qb = $this->createQueryBuilder('p');
-    //     $query = $qb->select('p')
-    //     // Pour éviter les injections SQL
-    //         ->where('p.name LIKE :search')
-    //         ->setParameter('search', '%'.$search.'%')
-    //         ->getQuery();
-
-    //     return $query->getResult();
-    // }
 
     public function add(Partner $entity, bool $flush = false): void
     {

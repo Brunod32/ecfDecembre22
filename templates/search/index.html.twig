@@ -9,7 +9,7 @@
     {{ include('_navbar.html.twig') }}
 {% endif %}
 
-    <h1 class="text-center mt-3 mb-5">Recherche</h1>
+    <h1 class="text-center mt-5 mb-5">Recherche</h1>
 
 {% if is_granted('ROLE_STRUCTURE') %}
     <button class="btn btn-outline-primary" title="Mon compte">
@@ -46,7 +46,7 @@
             </div>
         </template>
 
-        <h2 class="ms-5">Structures</h2>
+        <h2 class="ms-5 mt-3">Structures</h2>
         <div class="row structure-cards" data-structure-cards-container></div>
         <template data-structure-template>
             <div class="card border-primary m-2 p-2 cardSearch">

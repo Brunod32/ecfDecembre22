@@ -22,10 +22,9 @@ class StructureRepository extends ServiceEntityRepository
     }
 
     //Pagination
-    // Limit à 2 pendant mise en place, changer à la fin des développements
-    public function findStructurePagination(int $page = 1, int $limit = 2): array
+    public function findStructurePagination(int $page = 1, int $limit = 10): array
     {
-        return $this->findBy([], [], $limit, ($page -1 ) * 2);
+        return $this->findBy([], [], $limit, ($page - 1 ) * 10);
     }
 
     public function findStructurePaginationCount(): int

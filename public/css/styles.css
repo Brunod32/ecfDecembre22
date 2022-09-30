@@ -18,6 +18,11 @@ body {
     --dashboard-search-hover: rgb(0, 0, 255);
 
     background-color: var(--general-background-color);
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 600;
 }
 
 .mainContainer {
@@ -218,7 +223,7 @@ nav.main-menu.expanded,
 /* Responsive */
 @media screen and (max-width: 1030px) {
     body {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .main-menu {
