@@ -88,8 +88,8 @@ class StructureController extends AbstractController
                 ->from('brunod.dev@gmail.com')
                 ->to($structureMail)
                 ->cc($structurePartner)
-                ->subject('ICréation de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
-                ->htmlTemplate('mail/creationStructureAccountMail.html.Twig')
+                ->subject('Création de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
+                ->htmlTemplate('mail/creationStructureAccountMail.html.twig')
                 ->context([
                     'newsletter_date' => new \DateTime(),
                     'structure' => $structure,
@@ -157,7 +157,7 @@ class StructureController extends AbstractController
                 ->to($structureMail)
                 ->cc($structurePartner)
                 ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
-                ->htmlTemplate('mail/updateStructureAccountMail.html.Twig')
+                ->htmlTemplate('mail/updateStructureAccountMail.html.twig')
                 ->context([
                     'newsletter_date' => new \DateTime(),
                     'structure' => $structure,
