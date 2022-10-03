@@ -77,7 +77,7 @@ class PartnerController extends AbstractController
                 ->from('brunod.dev@gmail.com')
                 ->to($partnerMail)
                 ->subject('Création de votre compte SportClub - '.(new \DateTime())->format('d m Y'))
-                ->htmlTemplate('mail/creationPartnerAccountMail.html.Twig')
+                ->htmlTemplate('mail/creationPartnerAccountMail.html.twig')
                 ->context([
                     'newsletter_date' => new \DateTime(),
                     'partner' => $partner,
@@ -133,7 +133,7 @@ class PartnerController extends AbstractController
                 ->from('brunod.dev@gmail.com')
                 ->to($partnerMail)
                 ->subject('Information compte SportClub - '.(new \DateTime())->format('d m Y'))
-                ->htmlTemplate('mail/updatePartnerAccountMail.html.Twig')
+                ->htmlTemplate('mail/updatePartnerAccountMail.html.twig')
                 ->context([
                     'newsletter_date' => new \DateTime(),
                     'partner' => $partner,
