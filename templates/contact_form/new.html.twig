@@ -14,6 +14,6 @@
     {% elseif is_granted('ROLE_STRUCTURE') %}
         <a href="{{ path('app_structure_consult') }}" class="btn btn-outline-success">Annuler</a>
     {% endif %}
-
+{% include('_footer.html.twig') %}
 </div>
 {% endblock %}

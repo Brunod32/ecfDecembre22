@@ -3,7 +3,7 @@
 {% block title %}Détails structure{% endblock %}
 
 {% block body %}
-
+<div class="container">
 {# Alert message after contactForm message #}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success text-center mt-5">
@@ -48,8 +48,8 @@
                             <p>Retrouvez ici les informations relatives à votre structure.</p>
                         </p>
                         <div>
-                            <p>Votre email de contact: {{ structure.email }}</p>
-                            <p>Addresse de votre structure: {{ structure.address | capitalize }}</p>
+                            <p><b>Votre email de contact:</b> {{ structure.email }}</p>
+                            <p><b>Addresse de votre structure:</b> {{ structure.address | capitalize }}</p>
                         </div>
                         <div>
                             <a href="{{ path('app_structure_new_password', {'id': structure.id}) }}" class="changePassword">Modifier</a>
@@ -63,12 +63,12 @@
                     <section class="mt-5">
                         <h2>Vos permissions</h2>
                         <ul class="structurePerms">
-                            <li>Compte actif: {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                            <li>Vendre de la nourriture: {{ structure.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                            <li>Vendre de la boisson: {{ structure.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                            <li>Envoyer des newsletters: {{ structure.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                            <li>Utiliser le gestionnaire de planning: {{ structure.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
-                            <li>Proposer des cours particuliers: {{ structure.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><b>Compte actif:</b> {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><b>Vendre de la nourriture:</b> {{ structure.sellFood ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><b>Vendre de la boisson:</b> {{ structure.sellDrink ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><b>Envoyer des newsletters:</b> {{ structure.sendNewsletter ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><b>Utiliser le gestionnaire de planning:</b> {{ structure.scheduleManagement ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
+                            <li><b>Proposer des cours particuliers:</b> {{ structure.privateLesson ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</li>
                         </ul>
                     </section>
                 </div>
@@ -76,5 +76,7 @@
         </div>
     {% endif %}
 {% endfor %}
+{% include('_footer.html.twig') %}
+</div>
     
 {% endblock %}
