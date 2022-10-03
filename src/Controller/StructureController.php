@@ -62,17 +62,17 @@ class StructureController extends AbstractController
 
                 $this->addFlash(
                     'notice',
-                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                    'Si le status est inactif, aucune permission ne peut être accordée.'
                 );
             }
 
             // If connecting partner status inactive, structure status can not be active
-            if ($structure->getPartnerId->isActive() == false) {
+            if ($structure->getPartnerId()->isActive() == false) {
                 $structure->setActive(false);
 
                 $this->addFlash(
                     'notice',
-                    'Si le statut du partenaire de rattcahement est incatif, le statut de la structure ne peut être actif.'
+                    'Si le statut du partenaire de rattachement est inactif, le statut de la structure ne peut être actif.'
                 );
             }
 
@@ -133,7 +133,7 @@ class StructureController extends AbstractController
 
                 $this->addFlash(
                     'notice',
-                    'Si le statut est incatif, aucune permission ne peut être accordée.'
+                    'Si le statut est inactif, aucune permission ne peut être accordée.'
                 );
             }
 
@@ -143,7 +143,7 @@ class StructureController extends AbstractController
 
                 $this->addFlash(
                     'notice',
-                    'Si le statut du partenaire de rattachement est incatif, le statut de la structure ne peut être actif.'
+                    'Si le statut du partenaire de rattachement est inactif, le statut de la structure ne peut être actif.'
                 );
             }
 
