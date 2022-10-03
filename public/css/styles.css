@@ -16,6 +16,7 @@ body {
     --check-color-bis: rgb(76, 235, 76);
     --uncheck-color: rgb(255, 0, 0);
     --dashboard-search-hover: rgb(0, 0, 255);
+    --footer-color: rgb(211, 211, 211);
 
     background-color: var(--general-background-color);
     font-family: 'Open Sans', sans-serif;
@@ -220,6 +221,34 @@ nav.main-menu.expanded,
 
 /* -------------------- */
 
+
+/* footer */
+html {
+    /* To put the footer at the bottom of the page */
+    min-height: 100vh;
+    position: relative;
+}
+
+.footerPage {
+    background-color: var(--footer-color);
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    white-space: nowrap;
+    bottom: 0;
+    left:0;
+    right:0;
+    padding-top: 15px;
+}
+
+.footerPage__link {
+    text-decoration: none;
+    color: rgb(153, 150, 150);
+}
+
+
+/* -------------------- */
+
 /* Responsive */
 @media screen and (max-width: 1030px) {
     body {
@@ -247,6 +276,28 @@ nav.main-menu.expanded,
     .menuMobile__ul {
         background-color: var(--dashboard-background-color);
         height: 70px;
+    }
+
+    /* To put the footer at the bottom of the page */
+    html {
+        min-height: calc(100vh - 70px);
+        position: relative;
+    }
+
+    .mainContainer {
+        margin-bottom: 150px;
+    }
+
+    .footerPage {
+        background-color: var(--footer-color);
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        white-space: nowrap;
+        bottom: 70px;
+        left:0;
+        right:0;
+        padding-top: 15px;
     }
 
     .mainContainer {
