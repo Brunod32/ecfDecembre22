@@ -64,3 +64,6 @@ DirectoryIndex index.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
+
+ErrorDocument 403 /templates\bundles\Twigbundle\Exception\error403.html.twig
+ErrorDocument 404 /templates\bundles\Twigbundle\Exception\error404.html.twig
