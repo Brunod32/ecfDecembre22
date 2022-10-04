@@ -16,7 +16,7 @@ class ErrorController extends AbstractController
 
         $message = $exception->getStatusCode();
 
-        if ( $message === 404 ) {
+        if ( $message === 404 || $message === 500 ) {
             return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
         } elseif ( $message === 403 ) {
             return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
