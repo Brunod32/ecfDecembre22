@@ -17,6 +17,7 @@ body {
     --uncheck-color: rgb(255, 0, 0);
     --dashboard-search-hover: rgb(0, 0, 255);
     --footer-color: rgb(211, 211, 211);
+    --footer-text: rgb(153, 150, 150);
 
     background-color: var(--general-background-color);
     font-family: 'Open Sans', sans-serif;
@@ -243,7 +244,7 @@ html {
 
 .footerPage__link {
     text-decoration: none;
-    color: rgb(153, 150, 150);
+    color: var(--footer-text);
 }
 
 
