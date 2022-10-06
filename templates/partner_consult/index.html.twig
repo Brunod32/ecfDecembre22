@@ -48,12 +48,12 @@
                             <p>Retrouvez ici vos informations personnelles.</p>
                         </p>
                         <div>
-                            <p>Votre email de contact: {{ partner.email }}</p>
-                            <p>Votre addresse: {{ partner.address | capitalize }}</p>
+                            <p><b>Votre email de contact:</b> {{ partner.email }}.</p>
+                            <p><b>Votre addresse:</b> {{ partner.address | title }}.</p>
                         </div>
                         <div>
                             <a href="{{ path('app_partner_new_password', {'id': partner.id}) }}" class="changePassword">Modifier</a>
-                            mon mot de passe
+                            mon mot de passe.
                         </div>
                         <div class="mt-3">
                             <p>

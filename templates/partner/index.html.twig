@@ -80,8 +80,8 @@
                                     <h5 class="text-center mb-5">Identité du partenaire</h5>
                                     <div class="row row-cols-1 row-cols-lg-2">
                                         <p><b>Email:</b> {{ partner.email }}</p>
-                                        <p><b>Adresse:</b> {{ partner.address | capitalize }}</p>
-                                        <p><b>Description:</b> {{ partner.description | capitalize }}</p>
+                                        <p><b>Adresse:</b> {{ partner.address | title }}</p>
+                                        <p><b>Description:</b> {{ partner.description | title }}</p>
                                         <p><b>Actif:</b> {{ partner.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                                     </div>
                                     <hr class="pt-2">

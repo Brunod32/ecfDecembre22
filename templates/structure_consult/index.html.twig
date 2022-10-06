@@ -48,15 +48,15 @@
                             <p>Retrouvez ici les informations relatives à votre structure.</p>
                         </p>
                         <div>
-                            <p><b>Votre email de contact:</b> {{ structure.email }}</p>
-                            <p><b>Addresse de votre structure:</b> {{ structure.address | capitalize }}</p>
+                            <p><b>Votre email de contact:</b> {{ structure.email }}.</p>
+                            <p><b>Addresse de votre structure:</b> {{ structure.address | title }}.</p>
                         </div>
                         <div>
                             <a href="{{ path('app_structure_new_password', {'id': structure.id}) }}" class="changePassword">Modifier</a>
-                            mon mot de passe
+                            mon mot de passe.
                         </div>
                         <div class="mt-3">
-                            <p>Vous appartenez au groupe de salles de sport de: <b>{{ structure.partnerId.name }}</b></p>
+                            <p>Vous appartenez au groupe de salles de sport de: <b>{{ structure.partnerId.name }}.</b></p>
                         </div>
                     </section>
 

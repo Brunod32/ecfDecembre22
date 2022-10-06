@@ -62,7 +62,7 @@ class PartnerController extends AbstractController
 
                 $this->addFlash(
                     'notice',
-                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                    'Si le statut est inactif, aucune permission ne peut être accordée.'
                 );
             }
 
@@ -121,7 +121,7 @@ class PartnerController extends AbstractController
 
                 $this->addFlash(
                     'notice',
-                    'Si le status est incatif, aucune permission ne peut être accordée.'
+                    'Si le statut est inactif, aucune permission ne peut être accordée.'
                 );
             }
 

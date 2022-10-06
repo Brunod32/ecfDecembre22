@@ -14,7 +14,7 @@
                 <div>
                     <b>Rappel de vos informations:</b>
                     <p><b>Votre email de contact:</b> {{ partner.email }}.</p>
-                    <p><b>Votre adresse:</b> {{ partner.address|capitalize }}.</p>
+                    <p><b>Votre adresse:</b> {{ partner.address|title }}.</p>
                     {% if partner.active %}
                         <p>Votre compte est <b>actif</b>.</p>
                     {% endif %}
