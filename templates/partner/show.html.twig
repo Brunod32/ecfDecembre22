@@ -28,7 +28,7 @@
                 <div class="mt-3">
                     <h2 class="mb-3">Identité du partenaire</h2>
                     <p><b>Email:</b> {{ partner.email }}</p>
-                    <p><b>Adresse:</b> {{ partner.address }}</p>
+                    <p><b>Adresse:</b> {{ partner.address | title }}</p>
                     <p><b>Description:</b> {{ partner.description }}</p>
                     <p><b>Actif:</b> {{ partner.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
                 </div>

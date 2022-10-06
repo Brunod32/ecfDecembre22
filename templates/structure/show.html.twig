@@ -19,7 +19,7 @@
                     <p><b>Nom du manager:</b> {{ structure.managerLastname }}</p>
                     <p><b>Prénom du manager:</b> {{ structure.managerFirstname }}</p>
                     <p><b>Email:</b> {{ structure.email }}</p>
-                    <p><b>Adresse:</b> {{ structure.address }}</p>
+                    <p><b>Adresse:</b> {{ structure.address | title }}</p>
                     <p><b>Actif:</b> {{ structure.active ? '<i class="fa-solid fa-check check fa-2x"></i>' : '<i class="fa-solid fa-circle-xmark uncheck fa-2x"></i>' }}</p>
 
                 </div>
