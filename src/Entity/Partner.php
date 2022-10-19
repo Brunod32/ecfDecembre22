@@ -9,7 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+/** @UniqueEntity(
+  * fields={"name"},
+  * errorPath="name",
+  * message="Un partenaire portant ce nom existe déjà."
+  *)
+*/
 #[ORM\Entity(repositoryClass: PartnerRepository::class)]
 #[ApiResource()]
 class Partner implements PasswordAuthenticatedUserInterface, UserInterface
