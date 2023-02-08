@@ -4,28 +4,28 @@
 
 {% block body %}
 
-<div class="container">
-{% if is_granted('ROLE_ADMIN') %}
-    {{ include('_navbar.html.twig') }}
-{% endif %}
+<main class="container">
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('_navbar.html.twig') }}
+    {% endif %}
 
     <h1 class="text-center mt-5 mb-5">Recherche</h1>
 
-{% if is_granted('ROLE_STRUCTURE') %}
-    <button class="btn btn-outline-primary" title="Mon compte">
-        <a href="{{ path('app_structure_consult') }}">
-            <i class="fa-solid fa-chevron-left btnBack"></i>
-        </a>
-    </button>
-{% endif %}
+    {% if is_granted('ROLE_STRUCTURE') %}
+        <button class="btn btn-outline-primary" title="Mon compte">
+            <a href="{{ path('app_structure_consult') }}">
+                <i class="fa-solid fa-chevron-left btnBack"></i>
+            </a>
+        </button>
+    {% endif %}
 
-{% if is_granted('ROLE_PARTNER') %}
-    <button class="btn btn-outline-primary" title="Mon compte">
-        <a href="{{ path('app_partner_consult') }}">
-            <i class="fa-solid fa-chevron-left btnBack"></i>
-        </a>
-    </button>
-{% endif %}
+    {% if is_granted('ROLE_PARTNER') %}
+        <button class="btn btn-outline-primary" title="Mon compte">
+            <a href="{{ path('app_partner_consult') }}">
+                <i class="fa-solid fa-chevron-left btnBack"></i>
+            </a>
+        </button>
+    {% endif %}
 
     <section class="mainContainer">
         <div class="mainContainer__search mt-5">
@@ -56,6 +56,6 @@
             </div>
         </template>
     </section>
-{% include('_footer.html.twig') %}
-</div>
+    {% include('_footer.html.twig') %}
+</main>
 {% endblock %}

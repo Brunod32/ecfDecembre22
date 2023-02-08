@@ -3,7 +3,7 @@
 {% block title %}Détails structure{% endblock %}
 
 {% block body %}
-<div class="container">
+<main class="container">
 {# Alert message after contactForm message #}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success text-center mt-5">
@@ -77,6 +77,6 @@
     {% endif %}
 {% endfor %}
 {% include('_footer.html.twig') %}
-</div>
+</main>
     
 {% endblock %}

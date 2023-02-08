@@ -9,7 +9,7 @@
 
     <h1 class="text-center mt-3 mb-5">Bienvenue {{ app.user.firstname | capitalize }}</h1>
 
-    <section class="mainContainer">
+    <main class="mainContainer">
         <div class="mainContainer__dashboard">
             <p>Dans ce tableau de bord, vous pouvez gérer:</p>
             <div class="row gap-3 d-flex justify-content-around mt-5">
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </main>
     {% include('_footer.html.twig') %}
 </div>
 {% endblock %}
