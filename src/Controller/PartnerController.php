@@ -71,7 +71,7 @@ class PartnerController extends AbstractController
             $entityManager->persist($partner);
             $entityManager->flush();
 
-            // Sending mail
+            // Sending mail for creation
             $partnerMail = $partner->getEmail();
             $email = (new TemplatedEmail())
                 ->from('brunod.dev@gmail.com')
