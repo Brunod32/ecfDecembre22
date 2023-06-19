@@ -30,6 +30,6 @@ Pour installer le projet sur votre machine, vous devez le cloner depuis le dép�
 ### Création d'un profil administrateur
 Rendez-vous à l'adresse https://127.0.0.1:8000/register et remplissez le formulaire.
 
-## Visualisation en ligne
+<!-- ## Visualisation en ligne
 
-L'application est disponible en ligne à cette adresse: https://sportclubbybruno.herokuapp.com/
+L'application est disponible en ligne à cette adresse: https://sportclubbybruno.herokuapp.com/ -->

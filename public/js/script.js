@@ -28,7 +28,8 @@ searchInput?.addEventListener("input", (el) => {
     })
 })
 
-fetch('https://sportclubbybruno.herokuapp.com/api/partners')
+// fetch('https://sportclubbybruno.herokuapp.com/api/partners')
+fetch('https://localhost:8000/api/partners')
     .then(res => res.json())
     .then(data => { return data["hydra:member"]})
     .then(dataPartner => {
@@ -44,7 +45,8 @@ fetch('https://sportclubbybruno.herokuapp.com/api/partners')
             let link = document.createTextNode('Consulter');
             tagA.append(link);
             tagA.classList.add("linkCardSearch");
-            tagA.href = "https://sportclubbybruno.herokuapp.com/admin/partner/" + partner.id;
+            // tagA.href = "https://sportclubbybruno.herokuapp.com/admin/partner/" + partner.id;
+            tagA.href = "https://127.0.0.1:8000/admin/partner/" + partner.id;
             footer.appendChild(tagA);
             partnerCardContainer.append(card);
 
@@ -66,7 +68,8 @@ searchInput?.addEventListener("input", (el) => {
     })
 })
 
-fetch('https://sportclubbybruno.herokuapp.com/api/structures')
+// fetch('https://sportclubbybruno.herokuapp.com/api/structures')
+fetch('https://localhost:8000/api/structures')
     .then(res => res.json())
     .then(data => { return data["hydra:member"]})
     .then(dataStructure => {
@@ -82,7 +85,8 @@ fetch('https://sportclubbybruno.herokuapp.com/api/structures')
             let link = document.createTextNode('Consulter');
             tagA.append(link);
             tagA.classList.add("linkCardSearch");
-            tagA.href = "https://sportclubbybruno.herokuapp.com/admin/structure/" + structure.id;
+            // tagA.href = "https://sportclubbybruno.herokuapp.com/admin/structure/" + structure.id;
+            tagA.href = "https://localhost:8000/admin/structure/" + structure.id;
             footer.appendChild(tagA);
             structureCardContainer.append(card);
             return { name: structure.name, email: structure.email, element: card }
